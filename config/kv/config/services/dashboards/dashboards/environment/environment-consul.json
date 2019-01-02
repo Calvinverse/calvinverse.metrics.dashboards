@@ -29,7 +29,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -158,7 +158,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "format": "none",
       "gauge": {
         "maxValue": 100,
@@ -270,7 +270,7 @@
       "bars": true,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "fill": 1,
       "gridPos": {
         "h": 8,
@@ -685,7 +685,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "fill": 0,
       "gridPos": {
         "h": 8,
@@ -822,7 +822,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "fill": 0,
       "gridPos": {
         "h": 8,
@@ -957,7 +957,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "format": "dtdurationms",
       "gauge": {
         "maxValue": 100,
@@ -1074,7 +1074,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(245, 54, 54, 0.9)"
       ],
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "decimals": null,
       "format": "dtdurationms",
       "gauge": {
@@ -1202,7 +1202,7 @@
           "value": "total"
         }
       ],
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "fontSize": "100%",
       "gridPos": {
         "h": 7,
@@ -1287,7 +1287,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "fill": 1,
       "gridPos": {
         "h": 6,
@@ -1412,7 +1412,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "fill": 1,
       "gridPos": {
         "h": 6,
@@ -1539,7 +1539,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "fill": 1,
       "gridPos": {
         "h": 6,
@@ -1668,7 +1668,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -1791,7 +1791,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "Influx.Services",
+      "datasource": "InfluxDb.Services",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -2044,7 +2044,7 @@
           "text": "vista-test-01",
           "value": "vista-test-01"
         },
-        "datasource": "Influx.StatsD",
+        "datasource": "InfluxDb.StatsD",
         "hide": 0,
         "includeAll": true,
         "label": "Environment",
