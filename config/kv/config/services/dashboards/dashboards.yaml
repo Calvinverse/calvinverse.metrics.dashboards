@@ -1,0 +1,40 @@
+config:
+  # Define the datasource for services
+  - key: config/services/dashboards/metrics/provisioning/datasources/services
+    file: datasources/influxdb.services.notkv.yaml
+    
+  # Define the datasource for system
+  - key: config/services/dashboards/metrics/provisioning/datasources/system
+    file: datasources/influxdb.system.notkv.yaml
+
+  # Define the dashboard for consul
+  - key: config/services/dashboards/metrics/provisioning/dashboards/environment/environment-consul
+    file: dashboards/environment/environment-consul.json
+  
+  # Define the dashboard for elasticsearch
+  - key: config/services/dashboards/metrics/provisioning/dashboards/services/service-elasticsearch
+    file: dashboards/services/service-elasticsearch.json
+
+  # Define the dashboard for influx
+  - key: config/services/dashboards/metrics/provisioning/dashboards/services/service-influxdb
+    file: dashboards/services/service-influxdb.json
+  
+  # Define the dashboard for jenkins
+  - key: config/services/dashboards/metrics/provisioning/dashboards/services/service-jenkins
+    file: dashboards/services/service-jenkins.json
+  
+  # Define the dashboard for nexus
+  - key: config/services/dashboards/metrics/provisioning/dashboards/services/service-nexus
+    file: dashboards/services/service-nexus.json
+
+  # Define the dashboard for RabbitMQ
+  - key: config/services/dashboards/metrics/provisioning/dashboards/services/service-queue
+    file: dashboards/services/service-queue.json
+
+  # Define the dashboard for Hosts
+  - key: config/services/dashboards/metrics/provisioning/dashboards/system/system-hosts
+    file: dashboards/system/system-hosts.json
+
+  # Define the dashboard for Hyper-V
+  - key: config/services/dashboards/metrics/provisioning/dashboards/system/system-hyperv
+    file: dashboards/system/system-hyperv.json
