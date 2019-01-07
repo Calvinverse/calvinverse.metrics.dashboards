@@ -1,30 +1,27 @@
 {
   "annotations": {
-    "list": [
-      {
-        "$$hashKey": "object:87",
-        "builtIn": 1,
-        "datasource": "-- Grafana --",
-        "enable": true,
-        "hide": true,
-        "iconColor": "rgba(0, 211, 255, 1)",
-        "name": "Annotations & Alerts",
-        "type": "dashboard"
-      }
-    ]
+    "list": [{
+      "$$hashKey": "object:87",
+      "builtIn": 1,
+      "datasource": "-- Grafana --",
+      "enable": true,
+      "hide": true,
+      "iconColor": "rgba(0, 211, 255, 1)",
+      "name": "Annotations & Alerts",
+      "type": "dashboard"
+    }]
   },
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
   "iteration": 1539902367125,
   "links": [],
-  "panels": [
-    {
+  "panels": [{
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDb.Internal",
+      "datasource": "InfluxDb.Services",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -60,67 +57,63 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [
-        {
-          "alias": "$tag_database : $tag_id",
-          "groupBy": [
-            {
+      "targets": [{
+        "alias": "$tag_database : $tag_id",
+        "groupBy": [{
+            "params": [
+              "$_bucket"
+            ],
+            "type": "time"
+          },
+          {
+            "params": [
+              "database"
+            ],
+            "type": "tag"
+          },
+          {
+            "params": [
+              "id"
+            ],
+            "type": "tag"
+          },
+          {
+            "params": [
+              "none"
+            ],
+            "type": "fill"
+          }
+        ],
+        "measurement": "influxdb_shard",
+        "orderByTime": "ASC",
+        "policy": "retention.services",
+        "refId": "A",
+        "resultFormat": "time_series",
+        "select": [
+          [{
               "params": [
-                "$_bucket"
+                "writePointsOk"
               ],
-              "type": "time"
+              "type": "field"
+            },
+            {
+              "params": [],
+              "type": "last"
             },
             {
               "params": [
-                "database"
+                "1s"
               ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "id"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
+              "type": "non_negative_derivative"
             }
-          ],
-          "measurement": "shard",
-          "orderByTime": "ASC",
-          "policy": "monitor",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "writePointsOk"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              },
-              {
-                "params": [
-                  "1s"
-                ],
-                "type": "non_negative_derivative"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
+          ]
+        ],
+        "tags": []
+      }],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
-      "title": "Points/sec by DB shard",
+      "title": "Points/sec by DB influxdb_shard",
       "tooltip": {
         "shared": true,
         "sort": 2,
@@ -134,8 +127,7 @@
         "show": true,
         "values": []
       },
-      "yaxes": [
-        {
+      "yaxes": [{
           "format": "ops",
           "label": null,
           "logBase": 1,
@@ -158,7 +150,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDb.Internal",
+      "datasource": "InfluxDb.Services",
       "editable": true,
       "error": false,
       "fill": 3,
@@ -192,55 +184,51 @@
       "spaceLength": 10,
       "stack": true,
       "steppedLine": false,
-      "targets": [
-        {
-          "alias": "$tag_database",
-          "dsType": "influxdb",
-          "groupBy": [
-            {
+      "targets": [{
+        "alias": "$tag_database",
+        "dsType": "influxdb",
+        "groupBy": [{
+            "params": [
+              "$_bucket"
+            ],
+            "type": "time"
+          },
+          {
+            "params": [
+              "database"
+            ],
+            "type": "tag"
+          },
+          {
+            "params": [
+              "none"
+            ],
+            "type": "fill"
+          }
+        ],
+        "hide": false,
+        "measurement": "influxdb_tsm1_filestore",
+        "orderByTime": "ASC",
+        "policy": "default",
+        "query": "SELECT SUM(\"last\") FROM (SELECT last(\"diskBytes\") FROM \"influxdb_tsm1_filestore\" WHERE $timeFilter GROUP BY time($_bucket), \"id\") GROUP BY time($_bucket), \"database\"",
+        "rawQuery": true,
+        "refId": "A",
+        "resultFormat": "time_series",
+        "select": [
+          [{
               "params": [
-                "$_bucket"
+                "diskBytes"
               ],
-              "type": "time"
+              "type": "field"
             },
             {
-              "params": [
-                "database"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
+              "params": [],
+              "type": "last"
             }
-          ],
-          "hide": false,
-          "measurement": "tsm1_filestore",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT SUM(\"last\") FROM (SELECT last(\"diskBytes\") FROM \"tsm1_filestore\" WHERE $timeFilter GROUP BY time($_bucket), \"id\") GROUP BY time($_bucket), \"database\"",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "diskBytes"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
+          ]
+        ],
+        "tags": []
+      }],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
@@ -261,8 +249,7 @@
           "min"
         ]
       },
-      "yaxes": [
-        {
+      "yaxes": [{
           "format": "bytes",
           "label": null,
           "logBase": 1,
@@ -289,7 +276,7 @@
         "rgba(237, 129, 40, 0.89)",
         "rgba(50, 172, 45, 0.97)"
       ],
-      "datasource": "InfluxDb.Internal",
+      "datasource": "InfluxDb.Services",
       "editable": true,
       "error": false,
       "format": "short",
@@ -311,8 +298,7 @@
       "interval": null,
       "links": [],
       "mappingType": 1,
-      "mappingTypes": [
-        {
+      "mappingTypes": [{
           "name": "value to text",
           "value": 1
         },
@@ -328,13 +314,11 @@
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
+      "rangeMaps": [{
+        "from": "null",
+        "text": "N/A",
+        "to": "null"
+      }],
       "sparkline": {
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
@@ -342,63 +326,57 @@
         "show": false
       },
       "tableColumn": "",
-      "targets": [
-        {
-          "dsType": "influxdb",
-          "groupBy": [
-            {
+      "targets": [{
+        "dsType": "influxdb",
+        "groupBy": [{
+            "params": [
+              "$interval"
+            ],
+            "type": "time"
+          },
+          {
+            "params": [
+              "null"
+            ],
+            "type": "fill"
+          }
+        ],
+        "measurement": "influxdb_write",
+        "orderByTime": "ASC",
+        "policy": "default",
+        "refId": "A",
+        "resultFormat": "time_series",
+        "select": [
+          [{
               "params": [
-                "$interval"
+                "pointReq"
               ],
-              "type": "time"
+              "type": "field"
+            },
+            {
+              "params": [],
+              "type": "mean"
             },
             {
               "params": [
-                "null"
+                "1s"
               ],
-              "type": "fill"
+              "type": "non_negative_derivative"
             }
-          ],
-          "measurement": "write",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "pointReq"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  "1s"
-                ],
-                "type": "non_negative_derivative"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
+          ]
+        ],
+        "tags": []
+      }],
       "thresholds": "",
       "timeFrom": "5m",
       "title": "Points Written",
       "type": "singlestat",
       "valueFontSize": "100%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
+      "valueMaps": [{
+        "op": "=",
+        "text": "N/A",
+        "value": "null"
+      }],
       "valueName": "avg"
     },
     {
@@ -430,8 +408,7 @@
       "interval": null,
       "links": [],
       "mappingType": 1,
-      "mappingTypes": [
-        {
+      "mappingTypes": [{
           "name": "value to text",
           "value": 1
         },
@@ -447,13 +424,11 @@
       "postfixFontSize": "50%",
       "prefix": "",
       "prefixFontSize": "50%",
-      "rangeMaps": [
-        {
-          "from": "null",
-          "text": "N/A",
-          "to": "null"
-        }
-      ],
+      "rangeMaps": [{
+        "from": "null",
+        "text": "N/A",
+        "to": "null"
+      }],
       "sparkline": {
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": false,
@@ -461,67 +436,60 @@
         "show": false
       },
       "tableColumn": "",
-      "targets": [
-        {
-          "groupBy": [
-            {
+      "targets": [{
+        "groupBy": [{
+            "params": [
+              "$__interval"
+            ],
+            "type": "time"
+          },
+          {
+            "params": [
+              "null"
+            ],
+            "type": "fill"
+          }
+        ],
+        "measurement": "win_disk",
+        "orderByTime": "ASC",
+        "policy": "default",
+        "refId": "A",
+        "resultFormat": "time_series",
+        "select": [
+          [{
               "params": [
-                "$__interval"
+                "Percent_Free_Space"
               ],
-              "type": "time"
+              "type": "field"
             },
             {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "win_disk",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "Percent_Free_Space"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
-            },
-            {
-              "condition": "AND",
-              "key": "instance",
-              "operator": "=",
-              "value": "D:"
+              "params": [],
+              "type": "mean"
             }
           ]
-        }
-      ],
+        ],
+        "tags": [{
+            "key": "category",
+            "operator": "=",
+            "value": "metrics-storage"
+          },
+          {
+            "condition": "AND",
+            "key": "instance",
+            "operator": "=",
+            "value": "D:"
+          }
+        ]
+      }],
       "thresholds": "10, 30",
       "title": "Free space (D:)",
       "type": "singlestat",
       "valueFontSize": "80%",
-      "valueMaps": [
-        {
-          "op": "=",
-          "text": "N/A",
-          "value": "null"
-        }
-      ],
+      "valueMaps": [{
+        "op": "=",
+        "text": "N/A",
+        "value": "null"
+      }],
       "valueName": "current"
     },
     {
@@ -559,57 +527,51 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [
-        {
-          "alias": "$tag_instance",
-          "groupBy": [
-            {
+      "targets": [{
+        "alias": "$tag_instance",
+        "groupBy": [{
+            "params": [
+              "$_bucket"
+            ],
+            "type": "time"
+          },
+          {
+            "params": [
+              "instance"
+            ],
+            "type": "tag"
+          },
+          {
+            "params": [
+              "null"
+            ],
+            "type": "fill"
+          }
+        ],
+        "measurement": "win_disk",
+        "orderByTime": "ASC",
+        "policy": "default",
+        "refId": "A",
+        "resultFormat": "time_series",
+        "select": [
+          [{
               "params": [
-                "$_bucket"
+                "Percent_Free_Space"
               ],
-              "type": "time"
+              "type": "field"
             },
             {
-              "params": [
-                "instance"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "win_disk",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "Percent_Free_Space"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
+              "params": [],
+              "type": "mean"
             }
           ]
-        }
-      ],
+        ],
+        "tags": [{
+          "key": "category",
+          "operator": "=",
+          "value": "metrics-storage"
+        }]
+      }],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
@@ -627,8 +589,7 @@
         "show": true,
         "values": []
       },
-      "yaxes": [
-        {
+      "yaxes": [{
           "format": "percent",
           "label": "% Space free",
           "logBase": 1,
@@ -651,7 +612,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDb.Internal",
+      "datasource": "InfluxDb.Services",
       "fill": 1,
       "gridPos": {
         "h": 7,
@@ -681,11 +642,9 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [
-        {
+      "targets": [{
           "alias": "Used",
-          "groupBy": [
-            {
+          "groupBy": [{
               "params": [
                 "$_bucket"
               ],
@@ -698,14 +657,13 @@
               "type": "fill"
             }
           ],
-          "measurement": "runtime",
+          "measurement": "influxdb_runtime",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [
-              {
+            [{
                 "params": [
                   "HeapInUse"
                 ],
@@ -717,18 +675,15 @@
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "hostname",
-              "operator": "=",
-              "value": "NZDIMETRIC10-01"
-            }
-          ]
+          "tags": [{
+            "key": "category",
+            "operator": "=",
+            "value": "metrics-storage"
+          }]
         },
         {
           "alias": "Total",
-          "groupBy": [
-            {
+          "groupBy": [{
               "params": [
                 "$_bucket"
               ],
@@ -741,14 +696,13 @@
               "type": "fill"
             }
           ],
-          "measurement": "runtime",
+          "measurement": "influxdb_runtime",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
-            [
-              {
+            [{
                 "params": [
                   "Sys"
                 ],
@@ -760,18 +714,15 @@
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "hostname",
-              "operator": "=",
-              "value": "NZDIMETRIC10-01"
-            }
-          ]
+          "tags": [{
+            "key": "category",
+            "operator": "=",
+            "value": "metrics-storage"
+          }]
         },
         {
           "alias": "Alloc",
-          "groupBy": [
-            {
+          "groupBy": [{
               "params": [
                 "$_bucket"
               ],
@@ -784,14 +735,13 @@
               "type": "fill"
             }
           ],
-          "measurement": "runtime",
+          "measurement": "influxdb_runtime",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "C",
           "resultFormat": "time_series",
           "select": [
-            [
-              {
+            [{
                 "params": [
                   "Alloc"
                 ],
@@ -803,18 +753,15 @@
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "hostname",
-              "operator": "=",
-              "value": "NZDIMETRIC10-01"
-            }
-          ]
+          "tags": [{
+            "key": "category",
+            "operator": "=",
+            "value": "metrics-storage"
+          }]
         },
         {
           "alias": "Idle",
-          "groupBy": [
-            {
+          "groupBy": [{
               "params": [
                 "$_bucket"
               ],
@@ -827,14 +774,13 @@
               "type": "fill"
             }
           ],
-          "measurement": "runtime",
+          "measurement": "influxdb_runtime",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "D",
           "resultFormat": "time_series",
           "select": [
-            [
-              {
+            [{
                 "params": [
                   "HeapIdle"
                 ],
@@ -846,18 +792,15 @@
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "hostname",
-              "operator": "=",
-              "value": "NZDIMETRIC10-01"
-            }
-          ]
+          "tags": [{
+            "key": "category",
+            "operator": "=",
+            "value": "metrics-storage"
+          }]
         },
         {
           "alias": "Sys",
-          "groupBy": [
-            {
+          "groupBy": [{
               "params": [
                 "$_bucket"
               ],
@@ -870,14 +813,13 @@
               "type": "fill"
             }
           ],
-          "measurement": "runtime",
+          "measurement": "influxdb_runtime",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "E",
           "resultFormat": "time_series",
           "select": [
-            [
-              {
+            [{
                 "params": [
                   "HeapSys"
                 ],
@@ -889,13 +831,11 @@
               }
             ]
           ],
-          "tags": [
-            {
-              "key": "hostname",
-              "operator": "=",
-              "value": "NZDIMETRIC10-01"
-            }
-          ]
+          "tags": [{
+            "key": "category",
+            "operator": "=",
+            "value": "metrics-storage"
+          }]
         }
       ],
       "thresholds": [],
@@ -915,8 +855,7 @@
         "show": true,
         "values": []
       },
-      "yaxes": [
-        {
+      "yaxes": [{
           "format": "bytes",
           "label": null,
           "logBase": 1,
@@ -969,100 +908,45 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [
-        {
-          "alias": "Utlization (avg)",
-          "groupBy": [
-            {
+      "targets": [{
+        "alias": "Utlization (avg)",
+        "groupBy": [{
+            "params": [
+              "$_bucket"
+            ],
+            "type": "time"
+          },
+          {
+            "params": [
+              "null"
+            ],
+            "type": "fill"
+          }
+        ],
+        "measurement": "cpu",
+        "orderByTime": "ASC",
+        "policy": "default",
+        "refId": "A",
+        "resultFormat": "time_series",
+        "select": [
+          [{
               "params": [
-                "$_bucket"
+                "usage_user"
               ],
-              "type": "time"
+              "type": "field"
             },
             {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "win_cpu",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT 100 - mean(\"Percent_Idle_Time\") FROM \"win_cpu\" WHERE (\"host\" =~ /^$_host$/) AND $timeFilter GROUP BY time($_bucket) fill(null)",
-          "rawQuery": true,
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "Percent_Idle_Time"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
+              "params": [],
+              "type": "mean"
             }
           ]
-        },
-        {
-          "alias": "Utlization (99%)",
-          "groupBy": [
-            {
-              "params": [
-                "$_bucket"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "win_cpu",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT 100 - percentile(\"Percent_Idle_Time\", 99) FROM \"win_cpu\" WHERE (\"host\" =~ /^$_host$/) AND $timeFilter GROUP BY time($_bucket) fill(null)",
-          "rawQuery": true,
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "Percent_Idle_Time"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [
-                  "99"
-                ],
-                "type": "percentile"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
-            }
-          ]
-        }
-      ],
+        ],
+        "tags": [{
+          "key": "category",
+          "operator": "=",
+          "value": "metrics-storage"
+        }]
+      }],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
@@ -1080,8 +964,7 @@
         "show": true,
         "values": []
       },
-      "yaxes": [
-        {
+      "yaxes": [{
           "format": "percent",
           "label": null,
           "logBase": 1,
@@ -1134,51 +1017,45 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [
-        {
-          "alias": "Available",
-          "groupBy": [
-            {
+      "targets": [{
+        "alias": "Available",
+        "groupBy": [{
+            "params": [
+              "$_bucket"
+            ],
+            "type": "time"
+          },
+          {
+            "params": [
+              "null"
+            ],
+            "type": "fill"
+          }
+        ],
+        "measurement": "mem",
+        "orderByTime": "ASC",
+        "policy": "default",
+        "refId": "A",
+        "resultFormat": "time_series",
+        "select": [
+          [{
               "params": [
-                "$_bucket"
+                "available_percent"
               ],
-              "type": "time"
+              "type": "field"
             },
             {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "win_mem",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "Available_Bytes"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [
-            {
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
+              "params": [],
+              "type": "mean"
             }
           ]
-        }
-      ],
+        ],
+        "tags": [{
+          "key": "category",
+          "operator": "=",
+          "value": "metrics-storage"
+        }]
+      }],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
@@ -1196,9 +1073,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [
-        {
-          "format": "bytes",
+      "yaxes": [{
+          "format": "percent",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1220,7 +1096,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDb.Internal",
+      "datasource": "InfluxDb.Services",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1249,21 +1125,17 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "Series",
-          "yaxis": 2
-        }
-      ],
+      "seriesOverrides": [{
+        "alias": "Series",
+        "yaxis": 2
+      }],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [
-        {
+      "targets": [{
           "alias": "Series",
           "dsType": "influxdb",
-          "groupBy": [
-            {
+          "groupBy": [{
               "params": [
                 "$_bucket"
               ],
@@ -1276,14 +1148,13 @@
               "type": "fill"
             }
           ],
-          "measurement": "database",
+          "measurement": "influxdb_database",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [
-              {
+            [{
                 "params": [
                   "numSeries"
                 ],
@@ -1300,8 +1171,7 @@
         {
           "alias": "Measurements",
           "dsType": "influxdb",
-          "groupBy": [
-            {
+          "groupBy": [{
               "params": [
                 "$_bucket"
               ],
@@ -1314,14 +1184,13 @@
               "type": "fill"
             }
           ],
-          "measurement": "database",
+          "measurement": "influxdb_database",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
-            [
-              {
+            [{
                 "params": [
                   "numMeasurements"
                 ],
@@ -1354,8 +1223,7 @@
         "show": true,
         "values": []
       },
-      "yaxes": [
-        {
+      "yaxes": [{
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -1378,7 +1246,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDb.Internal",
+      "datasource": "InfluxDb.Services",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1413,12 +1281,10 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [
-        {
+      "targets": [{
           "alias": "Queries",
           "dsType": "influxdb",
-          "groupBy": [
-            {
+          "groupBy": [{
               "params": [
                 "$_bucket"
               ],
@@ -1437,15 +1303,14 @@
               "type": "fill"
             }
           ],
-          "measurement": "httpd",
+          "measurement": "influxdb_httpd",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT non_negative_derivative(last(\"queryReq\"), 1s) FROM \"influxdb_httpd\" WHERE $timeFilter GROUP BY time($interval), \"host\" fill(null)",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [
-              {
+            [{
                 "params": [
                   "queryReq"
                 ],
@@ -1468,8 +1333,7 @@
         {
           "alias": "Client Error",
           "dsType": "influxdb",
-          "groupBy": [
-            {
+          "groupBy": [{
               "params": [
                 "$_bucket"
               ],
@@ -1482,14 +1346,13 @@
               "type": "fill"
             }
           ],
-          "measurement": "httpd",
+          "measurement": "influxdb_httpd",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
-            [
-              {
+            [{
                 "params": [
                   "clientError"
                 ],
@@ -1512,8 +1375,7 @@
         {
           "alias": "Server Error",
           "dsType": "influxdb",
-          "groupBy": [
-            {
+          "groupBy": [{
               "params": [
                 "$_bucket"
               ],
@@ -1526,14 +1388,13 @@
               "type": "fill"
             }
           ],
-          "measurement": "httpd",
+          "measurement": "influxdb_httpd",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "C",
           "resultFormat": "time_series",
           "select": [
-            [
-              {
+            [{
                 "params": [
                   "serverError"
                 ],
@@ -1572,8 +1433,7 @@
         "show": true,
         "values": []
       },
-      "yaxes": [
-        {
+      "yaxes": [{
           "format": "ops",
           "logBase": 1,
           "max": null,
@@ -1594,7 +1454,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "InfluxDb.Internal",
+      "datasource": "InfluxDb.Services",
       "editable": true,
       "error": false,
       "fill": 1,
@@ -1629,12 +1489,10 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [
-        {
+      "targets": [{
           "alias": "Write Fail",
           "dsType": "influxdb",
-          "groupBy": [
-            {
+          "groupBy": [{
               "params": [
                 "$_bucket"
               ],
@@ -1653,15 +1511,14 @@
               "type": "fill"
             }
           ],
-          "measurement": "httpd",
+          "measurement": "influxdb_httpd",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT non_negative_derivative(last(\"queryReq\"), 1s) FROM \"influxdb_httpd\" WHERE $timeFilter GROUP BY time($interval), \"host\" fill(null)",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [
-              {
+            [{
                 "params": [
                   "pointsWrittenFail"
                 ],
@@ -1684,8 +1541,7 @@
         {
           "alias": "Write OK",
           "dsType": "influxdb",
-          "groupBy": [
-            {
+          "groupBy": [{
               "params": [
                 "$_bucket"
               ],
@@ -1704,15 +1560,14 @@
               "type": "fill"
             }
           ],
-          "measurement": "httpd",
+          "measurement": "influxdb_httpd",
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT non_negative_derivative(last(\"queryReq\"), 1s) FROM \"influxdb_httpd\" WHERE $timeFilter GROUP BY time($interval), \"host\" fill(null)",
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
-            [
-              {
+            [{
                 "params": [
                   "pointsWrittenOK"
                 ],
@@ -1751,8 +1606,7 @@
         "show": true,
         "values": []
       },
-      "yaxes": [
-        {
+      "yaxes": [{
           "format": "ops",
           "logBase": 1,
           "max": null,
@@ -1777,86 +1631,62 @@
     "meta"
   ],
   "templating": {
-    "list": [
-      {
-        "auto": true,
-        "auto_count": 100,
-        "auto_min": "15s",
-        "current": {
+    "list": [{
+      "auto": true,
+      "auto_count": 100,
+      "auto_min": "15s",
+      "current": {
+        "text": "auto",
+        "value": "$__auto_interval__bucket"
+      },
+      "hide": 0,
+      "label": "Bucket",
+      "name": "_bucket",
+      "options": [{
+          "selected": true,
           "text": "auto",
           "value": "$__auto_interval__bucket"
         },
-        "hide": 0,
-        "label": "Bucket",
-        "name": "_bucket",
-        "options": [
-          {
-            "selected": true,
-            "text": "auto",
-            "value": "$__auto_interval__bucket"
-          },
-          {
-            "selected": false,
-            "text": "10m",
-            "value": "10m"
-          },
-          {
-            "selected": false,
-            "text": "30m",
-            "value": "30m"
-          },
-          {
-            "selected": false,
-            "text": "1h",
-            "value": "1h"
-          },
-          {
-            "selected": false,
-            "text": "6h",
-            "value": "6h"
-          },
-          {
-            "selected": false,
-            "text": "12h",
-            "value": "12h"
-          },
-          {
-            "selected": false,
-            "text": "1d",
-            "value": "1d"
-          },
-          {
-            "selected": false,
-            "text": "7d",
-            "value": "7d"
-          }
-        ],
-        "query": "10m,30m,1h,6h,12h,1d,7d",
-        "refresh": 2,
-        "type": "interval"
-      },
-      {
-        "allValue": null,
-        "current": {
-          "text": "nzdimetric10-01",
-          "value": "nzdimetric10-01"
+        {
+          "selected": false,
+          "text": "10m",
+          "value": "10m"
         },
-        "hide": 0,
-        "includeAll": false,
-        "label": "Host",
-        "multi": false,
-        "name": "_host",
-        "options": [
-          {
-            "selected": true,
-            "text": "nzdimetric10-01",
-            "value": "nzdimetric10-01"
-          }
-        ],
-        "query": "nzdimetric10-01",
-        "type": "custom"
-      }
-    ]
+        {
+          "selected": false,
+          "text": "30m",
+          "value": "30m"
+        },
+        {
+          "selected": false,
+          "text": "1h",
+          "value": "1h"
+        },
+        {
+          "selected": false,
+          "text": "6h",
+          "value": "6h"
+        },
+        {
+          "selected": false,
+          "text": "12h",
+          "value": "12h"
+        },
+        {
+          "selected": false,
+          "text": "1d",
+          "value": "1d"
+        },
+        {
+          "selected": false,
+          "text": "7d",
+          "value": "7d"
+        }
+      ],
+      "query": "10m,30m,1h,6h,12h,1d,7d",
+      "refresh": 2,
+      "type": "interval"
+    }]
   },
   "time": {
     "from": "now-15m",
