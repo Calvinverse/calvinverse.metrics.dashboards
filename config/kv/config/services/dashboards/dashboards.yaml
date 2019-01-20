@@ -16,12 +16,12 @@ config:
     file: dashboards/environment/environment-consul.json
 
   # Define the dashboard for the UAPs
-  - key: config/services/dashboards/metrics/provisioning/dashboards/environment/environment-unify.uap
-    file: dashboards/environment/environment-unifi.uap.json
+  - key: config/services/dashboards/metrics/provisioning/dashboards/network/environment-unify.uap
+    file: dashboards/network/network-unifi.uap.json
 
   # Define the dashboard for the USG
-  - key: config/services/dashboards/metrics/provisioning/dashboards/environment/environment-unify.usg
-    file: dashboards/environment/environment-unifi.usg.json
+  - key: config/services/dashboards/metrics/provisioning/dashboards/network/environment-unify.usg
+    file: dashboards/network/network-unifi.usg.json
 
   # Define the dashboard for elasticsearch
   - key: config/services/dashboards/metrics/provisioning/dashboards/services/service-elasticsearch
