@@ -15,6 +15,10 @@ config:
   - key: config/services/dashboards/metrics/provisioning/dashboards/environment/environment-consul
     file: dashboards/environment/environment-consul.json
 
+  # Define the dashboard for vault
+  - key: config/services/dashboards/metrics/provisioning/dashboards/environment/environment-vault
+    file: dashboards/environment/environment-vault.json
+
   # Define the dashboard for the UAPs
   - key: config/services/dashboards/metrics/provisioning/dashboards/network/environment-unify.uap
     file: dashboards/network/network-unifi.uap.json
