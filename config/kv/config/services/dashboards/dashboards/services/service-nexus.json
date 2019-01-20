@@ -1580,12 +1580,12 @@
           "name": "_bucket",
           "options": [
             {
-              "selected": false,
+              "selected": true,
               "text": "auto",
               "value": "$__auto_interval__bucket"
             },
             {
-              "selected": true,
+              "selected": false,
               "text": "15s",
               "value": "15s"
             },
@@ -1675,7 +1675,7 @@
       ]
     },
     "time": {
-      "from": "now-3h",
+      "from": "now-24h",
       "to": "now"
     },
     "timepicker": {

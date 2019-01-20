@@ -909,44 +909,45 @@
       "stack": false,
       "steppedLine": false,
       "targets": [{
-        "alias": "Utlization (avg)",
-        "groupBy": [{
-            "params": [
-              "$_bucket"
-            ],
-            "type": "time"
-          },
-          {
-            "params": [
-              "null"
-            ],
-            "type": "fill"
-          }
-        ],
-        "measurement": "cpu",
-        "orderByTime": "ASC",
-        "policy": "default",
-        "refId": "A",
-        "resultFormat": "time_series",
-        "select": [
-          [{
+          "alias": "Utlization (avg)",
+          "groupBy": [{
               "params": [
-                "usage_user"
+                "$_bucket"
               ],
-              "type": "field"
+              "type": "time"
             },
             {
-              "params": [],
-              "type": "mean"
+              "params": [
+                "null"
+              ],
+              "type": "fill"
             }
-          ]
-        ],
-        "tags": [{
-          "key": "category",
-          "operator": "=",
-          "value": "metrics-storage"
-        }]
-      }],
+          ],
+          "measurement": "cpu",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [{
+                "params": [
+                  "usage_user"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [{
+            "key": "category",
+            "operator": "=",
+            "value": "metrics-storage"
+          }]
+        }
+      ],
       "thresholds": [],
       "timeFrom": null,
       "timeShift": null,
@@ -1623,6 +1624,7 @@
       ]
     }
   ],
+  "refresh": "1m",
   "schemaVersion": 16,
   "style": "dark",
   "tags": [
@@ -1632,64 +1634,65 @@
   ],
   "templating": {
     "list": [{
-      "auto": true,
-      "auto_count": 100,
-      "auto_min": "15s",
-      "current": {
-        "text": "auto",
-        "value": "$__auto_interval__bucket"
-      },
-      "hide": 0,
-      "label": "Bucket",
-      "name": "_bucket",
-      "options": [{
-          "selected": true,
+        "auto": true,
+        "auto_count": 100,
+        "auto_min": "15s",
+        "current": {
           "text": "auto",
           "value": "$__auto_interval__bucket"
         },
-        {
-          "selected": false,
-          "text": "10m",
-          "value": "10m"
-        },
-        {
-          "selected": false,
-          "text": "30m",
-          "value": "30m"
-        },
-        {
-          "selected": false,
-          "text": "1h",
-          "value": "1h"
-        },
-        {
-          "selected": false,
-          "text": "6h",
-          "value": "6h"
-        },
-        {
-          "selected": false,
-          "text": "12h",
-          "value": "12h"
-        },
-        {
-          "selected": false,
-          "text": "1d",
-          "value": "1d"
-        },
-        {
-          "selected": false,
-          "text": "7d",
-          "value": "7d"
-        }
-      ],
-      "query": "10m,30m,1h,6h,12h,1d,7d",
-      "refresh": 2,
-      "type": "interval"
-    }]
+        "hide": 0,
+        "label": "Bucket",
+        "name": "_bucket",
+        "options": [{
+            "selected": true,
+            "text": "auto",
+            "value": "$__auto_interval__bucket"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          }
+        ],
+        "query": "10m,30m,1h,6h,12h,1d,7d",
+        "refresh": 2,
+        "type": "interval"
+      }
+    ]
   },
   "time": {
-    "from": "now-15m",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {

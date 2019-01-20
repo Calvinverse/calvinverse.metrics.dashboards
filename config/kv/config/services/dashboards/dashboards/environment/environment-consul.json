@@ -2041,8 +2041,8 @@
       {
         "allValue": null,
         "current": {
-          "text": "vista-test-01",
-          "value": "vista-test-01"
+          "text": "integration-test",
+          "value": "integration-test"
         },
         "datasource": "InfluxDb.StatsD",
         "hide": 0,
