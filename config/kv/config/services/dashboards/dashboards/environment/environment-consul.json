@@ -245,7 +245,7 @@
           "measurement": "raft_leader_lastContact",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT max(\"upper\") AS \"upper\" FROM \"raft_leader_lastContact\" WHERE $timeFilter AND \"category\"='servicehub' AND \"service\" = 'consul' GROUP BY time($__interval) FILL(0)",
+          "query": "SELECT max(\"upper\") AS \"upper\" FROM \"raft_leader_lastContact\" WHERE $timeFilter AND \"category\"='hashi-server' AND \"service\" = 'consul' GROUP BY time($__interval) FILL(0)",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -345,7 +345,7 @@
           "measurement": "cpu",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT max(\"usage_user\") AS \"user_cpu\", max(\"usage_iowait\") AS \"iowait_cpu\" FROM \"cpu\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/  AND (\"category\"='servicehub') AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
+          "query": "SELECT max(\"usage_user\") AS \"user_cpu\", max(\"usage_iowait\") AS \"iowait_cpu\" FROM \"cpu\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/  AND (\"category\"='hashi-server') AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -367,7 +367,7 @@
             {
               "key": "category",
               "operator": "=",
-              "value": "servicehub"
+              "value": "hashi-server"
             }
           ]
         }
@@ -473,7 +473,7 @@
           "measurement": "diskio",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT non_negative_difference(max(\"read_bytes\")) + non_negative_difference(max(\"write_bytes\")) AS \"disk\" FROM \"diskio\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/  AND (\"category\"='servicehub') AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
+          "query": "SELECT non_negative_difference(max(\"read_bytes\")) + non_negative_difference(max(\"write_bytes\")) AS \"disk\" FROM \"diskio\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/  AND (\"category\"='hashi-server') AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -499,7 +499,7 @@
             {
               "key": "category",
               "operator": "=",
-              "value": "servicehub"
+              "value": "hashi-server"
             }
           ]
         }
@@ -605,7 +605,7 @@
           "measurement": "net",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT non_negative_difference(max(\"bytes_recv\")) + non_negative_difference(max(\"bytes_sent\")) AS \"bytes\" FROM \"net\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/  AND (\"category\"='servicehub') AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
+          "query": "SELECT non_negative_difference(max(\"bytes_recv\")) + non_negative_difference(max(\"bytes_sent\")) AS \"bytes\" FROM \"net\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/  AND (\"category\"='hashi-server') AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -631,7 +631,7 @@
             {
               "key": "category",
               "operator": "=",
-              "value": "servicehub"
+              "value": "hashi-server"
             }
           ]
         }
@@ -755,7 +755,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT count(tot) FROM (SELECT max(\"uptime\") AS \"tot\" FROM \"system\" WHERE $timeFilter AND \"category\"='servicehub' GROUP BY \"host\")",
+          "query": "SELECT count(tot) FROM (SELECT max(\"uptime\") AS \"tot\" FROM \"system\" WHERE $timeFilter AND \"category\"='hashi-server' GROUP BY \"host\")",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -793,7 +793,7 @@
           "hide": true,
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SHOW TAG VALUES EXACT CARDINALITY FROM \"rpc_request\" WITH KEY = \"host\" WHERE \"category\"='servicehub' AND $timeFilter",
+          "query": "SHOW TAG VALUES EXACT CARDINALITY FROM \"rpc_request\" WITH KEY = \"host\" WHERE \"category\"='hashi-server' AND $timeFilter",
           "rawQuery": true,
           "refId": "B",
           "resultFormat": "table",
@@ -880,7 +880,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"value\") AS \"count\" FROM \"rpc_request\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/  AND $timeFilter AND \"category\"='servicehub' AND \"service\" = 'consul' GROUP BY time($__interval), \"host\" FILL(null)",
+          "query": "SELECT mean(\"value\") AS \"count\" FROM \"rpc_request\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/  AND $timeFilter AND \"category\"='hashi-server' AND \"service\" = 'consul' GROUP BY time($__interval), \"host\" FILL(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1004,7 +1004,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT max(\"value\") AS \"alloc_bytes\" FROM \"runtime_alloc_bytes\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/  AND $timeFilter AND \"category\"='servicehub' GROUP BY time($__interval), \"host\" FILL(null)",
+          "query": "SELECT max(\"value\") AS \"alloc_bytes\" FROM \"runtime_alloc_bytes\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/  AND $timeFilter AND \"category\"='hashi-server' GROUP BY time($__interval), \"host\" FILL(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1041,7 +1041,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT max(\"value\") AS \"sys_bytes\" FROM \"runtime_sys_bytes\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/ AND $timeFilter AND \"category\"='servicehub' GROUP BY time($__interval), \"host\" FILL(null)",
+          "query": "SELECT max(\"value\") AS \"sys_bytes\" FROM \"runtime_sys_bytes\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/ AND $timeFilter AND \"category\"='hashi-server' GROUP BY time($__interval), \"host\" FILL(null)",
           "rawQuery": true,
           "refId": "B",
           "resultFormat": "time_series",
@@ -1085,7 +1085,7 @@
           "measurement": "mem",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT max(\"total\") AS \"total_bytes\" FROM \"mem\" WHERE (\"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/ AND \"category\"='servicehub') AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
+          "query": "SELECT max(\"total\") AS \"total_bytes\" FROM \"mem\" WHERE (\"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/ AND \"category\"='hashi-server') AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
           "rawQuery": true,
           "refId": "C",
           "resultFormat": "time_series",
@@ -1119,7 +1119,7 @@
               "condition": "AND",
               "key": "category",
               "operator": "=",
-              "value": "servicehub"
+              "value": "hashi-server"
             }
           ]
         }
@@ -1226,7 +1226,7 @@
           "hide": false,
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT sum(\"value\") AS \"count\" FROM \"raft_apply\" WHERE \"environment\" =~ /^$_environment$/  AND $timeFilter AND \"category\"='servicehub' AND \"service\" = 'consul' GROUP BY time($__interval) FILL(0)",
+          "query": "SELECT sum(\"value\") AS \"count\" FROM \"raft_apply\" WHERE \"environment\" =~ /^$_environment$/  AND $timeFilter AND \"category\"='hashi-server' AND \"service\" = 'consul' GROUP BY time($__interval) FILL(0)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1266,7 +1266,7 @@
           "measurement": "raft_commitTime",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT max(\"value\") AS \"commit_time_ms\" FROM \"raft_commitTime\" WHERE (\"category\"='servicehub' AND \"service\" = 'consul') AND $timeFilter GROUP BY time($__interval) fill(0)",
+          "query": "SELECT max(\"value\") AS \"commit_time_ms\" FROM \"raft_commitTime\" WHERE (\"category\"='hashi-server' AND \"service\" = 'consul') AND $timeFilter GROUP BY time($__interval) fill(0)",
           "rawQuery": false,
           "refId": "B",
           "resultFormat": "time_series",
@@ -1288,7 +1288,7 @@
             {
               "key": "category",
               "operator": "=",
-              "value": "servicehub"
+              "value": "hashi-server"
             },
             {
               "condition": "AND",
@@ -1396,7 +1396,7 @@
           "measurement": "txn_apply",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"mean\") AS \"mean\", max(\"90_percentile\") AS \"90_percentile\" FROM \"txn_apply\" WHERE $timeFilter AND \"category\"='servicehub' AND \"service\" = 'consul' GROUP BY time($__interval) FILL(null)",
+          "query": "SELECT mean(\"mean\") AS \"mean\", max(\"90_percentile\") AS \"90_percentile\" FROM \"txn_apply\" WHERE $timeFilter AND \"category\"='hashi-server' AND \"service\" = 'consul' GROUP BY time($__interval) FILL(null)",
           "rawQuery": false,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1440,7 +1440,7 @@
           "measurement": "txn_apply",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"mean\") AS \"mean\", max(\"90_percentile\") AS \"90_percentile\" FROM \"txn_apply\" WHERE $timeFilter AND \"category\"='servicehub' AND \"service\" = 'consul' GROUP BY time($__interval) FILL(null)",
+          "query": "SELECT mean(\"mean\") AS \"mean\", max(\"90_percentile\") AS \"90_percentile\" FROM \"txn_apply\" WHERE $timeFilter AND \"category\"='hashi-server' AND \"service\" = 'consul' GROUP BY time($__interval) FILL(null)",
           "rawQuery": false,
           "refId": "B",
           "resultFormat": "time_series",
@@ -1484,7 +1484,7 @@
           "measurement": "txn_apply",
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"mean\") AS \"mean\", max(\"90_percentile\") AS \"90_percentile\" FROM \"txn_apply\" WHERE $timeFilter AND \"category\"='servicehub' AND \"service\" = 'consul' GROUP BY time($__interval) FILL(null)",
+          "query": "SELECT mean(\"mean\") AS \"mean\", max(\"90_percentile\") AS \"90_percentile\" FROM \"txn_apply\" WHERE $timeFilter AND \"category\"='hashi-server' AND \"service\" = 'consul' GROUP BY time($__interval) FILL(null)",
           "rawQuery": false,
           "refId": "C",
           "resultFormat": "time_series",
@@ -1639,7 +1639,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT last(\"upper\")/1000000 AS \"milliseconds\" FROM \"runtime_gc_pause_ns\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/  AND $timeFilter AND \"category\"='servicehub' AND \"service\" = 'consul' GROUP BY host, time($__interval) FILL(0)",
+          "query": "SELECT last(\"upper\")/1000000 AS \"milliseconds\" FROM \"runtime_gc_pause_ns\" WHERE \"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/  AND $timeFilter AND \"category\"='hashi-server' AND \"service\" = 'consul' GROUP BY host, time($__interval) FILL(0)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -2263,7 +2263,7 @@
         "multi": false,
         "name": "_host",
         "options": [],
-        "query": "show tag values with key = \"host\" where category = 'servicehub'",
+        "query": "show tag values with key = \"host\" where category = 'hashi-server'",
         "refresh": 2,
         "regex": "",
         "sort": 1,
@@ -2283,7 +2283,7 @@
         "multi": false,
         "name": "_environment",
         "options": [],
-        "query": "show tag values with key = \"environment\" where category = 'servicehub'",
+        "query": "show tag values with key = \"environment\" where category = 'hashi-server'",
         "refresh": 2,
         "regex": "",
         "sort": 1,
