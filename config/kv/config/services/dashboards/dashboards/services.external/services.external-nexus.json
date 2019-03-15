@@ -1,898 +1,45 @@
 {
   "annotations": {
-    "list": [{
-      "builtIn": 1,
-      "datasource": "-- Grafana --",
-      "enable": true,
-      "hide": true,
-      "iconColor": "rgba(0, 211, 255, 1)",
-      "name": "Annotations & Alerts",
-      "type": "dashboard"
-    }]
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
   },
+  "description": "",
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "iteration": 1546580949689,
+  "iteration": 1552271864102,
   "links": [],
-  "panels": [{
-      "columns": [],
+  "panels": [
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
       "datasource": "InfluxDb.Services",
-      "fontSize": "100%",
+      "fill": 1,
       "gridPos": {
-        "h": 6,
-        "w": 8,
+        "h": 14,
+        "w": 7,
         "x": 0,
         "y": 0
-      },
-      "id": 11,
-      "links": [],
-      "pageSize": null,
-      "scroll": true,
-      "showHeader": true,
-      "sort": {
-        "col": 0,
-        "desc": true
-      },
-      "styles": [{
-          "alias": "Time",
-          "dateFormat": "YYYY-MM-DD HH:mm:ss",
-          "pattern": "Time",
-          "type": "hidden"
-        },
-        {
-          "alias": "",
-          "colorMode": null,
-          "colors": [
-            "rgba(245, 54, 54, 0.9)",
-            "rgba(237, 129, 40, 0.89)",
-            "rgba(50, 172, 45, 0.97)"
-          ],
-          "decimals": 0,
-          "pattern": "/.*/",
-          "thresholds": [],
-          "type": "number",
-          "unit": "short"
-        }
-      ],
-      "targets": [{
-        "alias": "$tag_host $col",
-        "dsType": "influxdb",
-        "groupBy": [{
-          "params": [
-            "host"
-          ],
-          "type": "tag"
-        }],
-        "measurement": "hyper_v_hypervisor",
-        "orderByTime": "ASC",
-        "policy": "default",
-        "refId": "A",
-        "resultFormat": "table",
-        "select": [
-          [{
-              "params": [
-                "Logical_Processors"
-              ],
-              "type": "field"
-            },
-            {
-              "params": [],
-              "type": "last"
-            },
-            {
-              "params": [
-                "Logical processors"
-              ],
-              "type": "alias"
-            }
-          ],
-          [{
-              "params": [
-                "Virtual_Processors"
-              ],
-              "type": "field"
-            },
-            {
-              "params": [],
-              "type": "last"
-            },
-            {
-              "params": [
-                "Virtual processors"
-              ],
-              "type": "alias"
-            }
-          ],
-          [{
-              "params": [
-                "Partitions"
-              ],
-              "type": "field"
-            },
-            {
-              "params": [],
-              "type": "last"
-            },
-            {
-              "params": [
-                "Active virtual machines"
-              ],
-              "type": "alias"
-            }
-          ]
-        ],
-        "tags": [{
-            "key": "environment",
-            "operator": "=~",
-            "value": "/^$_environment$/"
-          },
-          {
-            "condition": "AND",
-            "key": "host",
-            "operator": "=~",
-            "value": "/^$_host$/"
-          }
-        ]
-      }],
-      "title": "Hypervisor use",
-      "transform": "table",
-      "type": "table"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "InfluxDb.Services",
-      "fill": 1,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 8,
-        "y": 0
-      },
-      "id": 13,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [{
-        "alias": "$tag_host",
-        "groupBy": [{
-            "params": [
-              "$_bucket"
-            ],
-            "type": "time"
-          },
-          {
-            "params": [
-              "host"
-            ],
-            "type": "tag"
-          },
-          {
-            "params": [
-              "null"
-            ],
-            "type": "fill"
-          }
-        ],
-        "measurement": "hyper_v_dynamic_memory_balancer",
-        "orderByTime": "ASC",
-        "policy": "default",
-        "refId": "A",
-        "resultFormat": "time_series",
-        "select": [
-          [{
-              "params": [
-                "Available_Memory"
-              ],
-              "type": "field"
-            },
-            {
-              "params": [],
-              "type": "last"
-            }
-          ]
-        ],
-        "tags": [{
-            "key": "environment",
-            "operator": "=~",
-            "value": "/^$_environment$/"
-          },
-          {
-            "condition": "AND",
-            "key": "host",
-            "operator": "=~",
-            "value": "/^$_host$/"
-          }
-        ]
-      }],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Available Memory",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [{
-          "format": "mbytes",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "InfluxDb.Services",
-      "fill": 1,
-      "gridPos": {
-        "h": 6,
-        "w": 8,
-        "x": 16,
-        "y": 0
-      },
-      "id": 9,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [{
-        "alias": "$tag_host",
-        "dsType": "influxdb",
-        "groupBy": [{
-            "params": [
-              "$_bucket"
-            ],
-            "type": "time"
-          },
-          {
-            "params": [
-              "host"
-            ],
-            "type": "tag"
-          },
-          {
-            "params": [
-              "previous"
-            ],
-            "type": "fill"
-          }
-        ],
-        "measurement": "hyper_v_dynamic_memory_balancer",
-        "orderByTime": "ASC",
-        "policy": "default",
-        "refId": "A",
-        "resultFormat": "time_series",
-        "select": [
-          [{
-              "params": [
-                "Average_Pressure"
-              ],
-              "type": "field"
-            },
-            {
-              "params": [],
-              "type": "last"
-            }
-          ]
-        ],
-        "tags": [{
-            "key": "environment",
-            "operator": "=~",
-            "value": "/^$_environment$/"
-          },
-          {
-            "condition": "AND",
-            "key": "host",
-            "operator": "=~",
-            "value": "/^$_host$/"
-          }
-        ]
-      }],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Memory pressure",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [{
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "InfluxDb.Services",
-      "fill": 1,
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 0,
-        "y": 6
-      },
-      "id": 4,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [{
-          "alias": "% Guest run time ($tag_host)",
-          "dsType": "influxdb",
-          "groupBy": [{
-              "params": [
-                "$_bucket"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "host"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "hyper_v_hypervisor_logical_processor",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [{
-                "params": [
-                  "Percent_Guest_Run_Time"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
-            },
-            {
-              "condition": "AND",
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
-            }
-          ]
-        },
-        {
-          "alias": "% Hypervisor run time ($tag_host)",
-          "dsType": "influxdb",
-          "groupBy": [{
-              "params": [
-                "$_bucket"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "host"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "hyper_v_hypervisor_logical_processor",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [{
-                "params": [
-                  "Percent_Hypervisor_Run_Time"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
-            },
-            {
-              "condition": "AND",
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
-            }
-          ]
-        },
-        {
-          "alias": "% Total run time ($tag_host)",
-          "dsType": "influxdb",
-          "groupBy": [{
-              "params": [
-                "$_bucket"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "host"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "hyper_v_hypervisor_logical_processor",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [{
-                "params": [
-                  "Percent_Total_Run_Time"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
-            },
-            {
-              "condition": "AND",
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
-            }
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Total CPU utilization",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [{
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "InfluxDb.Services",
-      "fill": 1,
-      "gridPos": {
-        "h": 7,
-        "w": 12,
-        "x": 12,
-        "y": 6
       },
       "id": 6,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": true,
-        "show": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "percentage": false,
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [{
-          "alias": "% Guest run time ($tag_host)",
-          "dsType": "influxdb",
-          "groupBy": [{
-              "params": [
-                "$_bucket"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "host"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "hyper_v_hypervisor_root_virtual_processor",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "A",
-          "resultFormat": "time_series",
-          "select": [
-            [{
-                "params": [
-                  "Percent_Guest_Run_Time"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
-            },
-            {
-              "condition": "AND",
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
-            }
-          ]
-        },
-        {
-          "alias": "% Hypervisor run time ($tag_host)",
-          "dsType": "influxdb",
-          "groupBy": [{
-              "params": [
-                "$_bucket"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "host"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "hyper_v_hypervisor_root_virtual_processor",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "B",
-          "resultFormat": "time_series",
-          "select": [
-            [{
-                "params": [
-                  "Percent_Hypervisor_Run_Time"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
-            },
-            {
-              "condition": "AND",
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
-            }
-          ]
-        },
-        {
-          "alias": "% Total run time ($tag_host)",
-          "dsType": "influxdb",
-          "groupBy": [{
-              "params": [
-                "$_bucket"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "host"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "hyper_v_hypervisor_root_virtual_processor",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [{
-                "params": [
-                  "Percent_Total_Run_Time"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              }
-            ]
-          ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
-            },
-            {
-              "condition": "AND",
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
-            }
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Host CPU utilization",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [{
-          "format": "percent",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "InfluxDb.System",
-      "fill": 1,
-      "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 0,
-        "y": 13
-      },
-      "id": 7,
       "legend": {
         "alignAsTable": true,
         "avg": true,
         "current": true,
         "max": true,
         "min": false,
-        "rightSide": true,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
@@ -905,14 +52,20 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [],
+      "seriesOverrides": [
+        {
+          "alias": "/Time/",
+          "yaxis": 2
+        }
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
-          "alias": "Disk read / s ($tag_host)",
-          "dsType": "influxdb",
-          "groupBy": [{
+      "targets": [
+        {
+          "alias": "Count ($tag_host)",
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -931,41 +84,110 @@
               "type": "fill"
             }
           ],
-          "measurement": "win_diskio",
+          "measurement": "jvm_garbage_collector",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "CollectionCount"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              },
+              {
+                "params": [
+                  "1s"
+                ],
+                "type": "non_negative_derivative"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            }
+          ]
+        },
+        {
+          "alias": "Time ($tag_host)",
+          "groupBy": [
+            {
+              "params": [
+                "$_bucket"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "jvm_garbage_collector",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
-                  "Disk_Read_Bytes_persec"
+                  "CollectionTime"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "mean"
+                "type": "last"
+              },
+              {
+                "params": [
+                  "1s"
+                ],
+                "type": "non_negative_derivative"
               }
             ]
           ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
             },
             {
               "condition": "AND",
-              "key": "host",
+              "key": "environment",
               "operator": "=~",
-              "value": "/^$_host$/"
+              "value": "/^$_environment$/"
             }
           ]
         },
         {
-          "alias": "Disk write / s ($tag_host)",
-          "dsType": "influxdb",
-          "groupBy": [{
+          "alias": "Pending finalize ($tag_host)",
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -984,34 +206,42 @@
               "type": "fill"
             }
           ],
-          "measurement": "win_diskio",
+          "measurement": "jvm_memory",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "C",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
-                  "Disk_Write_Bytes_persec"
+                  "ObjectPendingFinalizationCount"
                 ],
                 "type": "field"
               },
               {
                 "params": [],
-                "type": "mean"
+                "type": "last"
+              },
+              {
+                "params": [
+                  "1s"
+                ],
+                "type": "non_negative_derivative"
               }
             ]
           ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
             },
             {
               "condition": "AND",
-              "key": "host",
+              "key": "environment",
               "operator": "=~",
-              "value": "/^$_host$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -1020,7 +250,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Disk I/O",
+      "title": "JVM Garbage collector",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1034,17 +264,18 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
-          "format": "Bps",
-          "label": null,
+      "yaxes": [
+        {
+          "format": "short",
+          "label": "Collections / s",
           "logBase": 1,
           "max": null,
           "min": null,
           "show": true
         },
         {
-          "format": "short",
-          "label": null,
+          "format": "ms",
+          "label": "Collection time /s",
           "logBase": 1,
           "max": null,
           "min": null,
@@ -1062,15 +293,14 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": "InfluxDb.System",
-      "description": "Note: This is not the correct data to display. In reality we only care about those builds executed on one of the hyper-v hosts and ideally we would be able to figure out which VM runs on which host",
       "fill": 1,
       "gridPos": {
-        "h": 6,
-        "w": 12,
-        "x": 12,
-        "y": 13
+        "h": 7,
+        "w": 8,
+        "x": 7,
+        "y": 0
       },
-      "id": 10,
+      "id": 14,
       "legend": {
         "avg": false,
         "current": false,
@@ -1092,46 +322,178 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
-        "dsType": "influxdb",
-        "groupBy": [{
-            "params": [
-              "$_bucket"
-            ],
-            "type": "time"
-          },
-          {
-            "params": [
-              "0"
-            ],
-            "type": "fill"
-          }
-        ],
-        "measurement": "builds.build.completed",
-        "orderByTime": "ASC",
-        "policy": "default",
-        "refId": "A",
-        "resultFormat": "time_series",
-        "select": [
-          [{
+      "targets": [
+        {
+          "alias": "user ($tag_host)",
+          "groupBy": [
+            {
               "params": [
-                "executing"
+                "$_bucket"
               ],
-              "type": "field"
+              "type": "time"
             },
             {
-              "params": [],
-              "type": "count"
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "cpu",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "usage_user"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
             }
           ]
-        ],
-        "tags": []
-      }],
+        },
+        {
+          "alias": "system ($tag_host)",
+          "groupBy": [
+            {
+              "params": [
+                "$_bucket"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "cpu",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "usage_system"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            }
+          ]
+        },
+        {
+          "alias": "iowait ($tag_host)",
+          "groupBy": [
+            {
+              "params": [
+                "$_bucket"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "cpu",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "usage_iowait"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            }
+          ]
+        }
+      ],
       "thresholds": [],
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Builds",
+      "title": "Host CPU",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1145,8 +507,9 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
-          "format": "short",
+      "yaxes": [
+        {
+          "format": "percent",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1175,19 +538,19 @@
       "datasource": "InfluxDb.Services",
       "fill": 1,
       "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 19
+        "h": 8,
+        "w": 9,
+        "x": 15,
+        "y": 0
       },
-      "id": 15,
+      "id": 2,
       "legend": {
         "alignAsTable": true,
         "avg": true,
         "current": true,
         "max": true,
         "min": false,
-        "rightSide": true,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
@@ -1204,61 +567,11 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
-          "alias": "Total ($tag_host)",
-          "groupBy": [{
-              "params": [
-                "$_bucket"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "host"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "hyper_v_virtual_switch",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "C",
-          "resultFormat": "time_series",
-          "select": [
-            [{
-                "params": [
-                  "Packets_persec"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
-            },
-            {
-              "condition": "AND",
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
-            }
-          ]
-        },
+      "targets": [
         {
-          "alias": "Received ($tag_host)",
-          "groupBy": [{
+          "alias": "Committed ($tag_host)",
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1277,67 +590,16 @@
               "type": "fill"
             }
           ],
-          "measurement": "hyper_v_virtual_switch",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "E",
-          "resultFormat": "time_series",
-          "select": [
-            [{
-                "params": [
-                  "Packets_Received_persec"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
-            },
-            {
-              "condition": "AND",
-              "key": "host",
-              "operator": "=~",
-              "value": "/^$_host$/"
-            }
-          ]
-        },
-        {
-          "alias": "Broadcast received ($tag_host)",
-          "groupBy": [{
-              "params": [
-                "$_bucket"
-              ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "host"
-              ],
-              "type": "tag"
-            },
-            {
-              "params": [
-                "null"
-              ],
-              "type": "fill"
-            }
-          ],
-          "measurement": "hyper_v_virtual_switch",
+          "measurement": "jvm_memory",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
-                  "Broadcast_Packets_Received_persec"
+                  "HeapMemoryUsage.committed"
                 ],
                 "type": "field"
               },
@@ -1347,22 +609,24 @@
               }
             ]
           ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
             },
             {
               "condition": "AND",
-              "key": "host",
+              "key": "environment",
               "operator": "=~",
-              "value": "/^$_host$/"
+              "value": "/^$_environment$/"
             }
           ]
         },
         {
-          "alias": "Broadcast send ($tag_host)",
-          "groupBy": [{
+          "alias": "Max ($tag_host)",
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1381,15 +645,16 @@
               "type": "fill"
             }
           ],
-          "measurement": "hyper_v_virtual_switch",
+          "measurement": "jvm_memory",
           "orderByTime": "ASC",
           "policy": "default",
-          "refId": "B",
+          "refId": "C",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
-                  "Broadcast_Packets_Sent_persec"
+                  "HeapMemoryUsage.max"
                 ],
                 "type": "field"
               },
@@ -1399,22 +664,24 @@
               }
             ]
           ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
             },
             {
               "condition": "AND",
-              "key": "host",
+              "key": "environment",
               "operator": "=~",
-              "value": "/^$_host$/"
+              "value": "/^$_environment$/"
             }
           ]
         },
         {
-          "alias": "Directed received ($tag_host)",
-          "groupBy": [{
+          "alias": "Used ($tag_host)",
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1433,15 +700,16 @@
               "type": "fill"
             }
           ],
-          "measurement": "hyper_v_virtual_switch",
+          "measurement": "jvm_memory",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "D",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
-                  "Directed_Packets_Received_persec"
+                  "HeapMemoryUsage.used"
                 ],
                 "type": "field"
               },
@@ -1451,16 +719,17 @@
               }
             ]
           ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
             },
             {
               "condition": "AND",
-              "key": "host",
+              "key": "environment",
               "operator": "=~",
-              "value": "/^$_host$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -1469,7 +738,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Network packets",
+      "title": "JVM Heap memory",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1483,8 +752,142 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
-          "format": "pps",
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDb.System",
+      "fill": 1,
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 7,
+        "y": 7
+      },
+      "id": 15,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "$tag_host",
+          "groupBy": [
+            {
+              "params": [
+                "$_bucket"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "mem",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "used_percent"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "last"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Host memory % used",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percent",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1513,19 +916,19 @@
       "datasource": "InfluxDb.Services",
       "fill": 1,
       "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 12,
-        "y": 19
+        "h": 8,
+        "w": 9,
+        "x": 15,
+        "y": 8
       },
-      "id": 17,
+      "id": 4,
       "legend": {
         "alignAsTable": true,
         "avg": true,
         "current": true,
         "max": true,
         "min": false,
-        "rightSide": true,
+        "rightSide": false,
         "show": true,
         "total": false,
         "values": true
@@ -1542,9 +945,11 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
-          "alias": "Total ($tag_host)",
-          "groupBy": [{
+      "targets": [
+        {
+          "alias": "Committed ($tag_host)",
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1563,15 +968,16 @@
               "type": "fill"
             }
           ],
-          "measurement": "hyper_v_virtual_switch",
+          "measurement": "jvm_memory",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
-                  "Bytes_persec"
+                  "NonHeapMemoryUsage.committed"
                 ],
                 "type": "field"
               },
@@ -1581,22 +987,24 @@
               }
             ]
           ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
             },
             {
               "condition": "AND",
-              "key": "host",
+              "key": "environment",
               "operator": "=~",
-              "value": "/^$_host$/"
+              "value": "/^$_environment$/"
             }
           ]
         },
         {
-          "alias": "Received ($tag_host)",
-          "groupBy": [{
+          "alias": "Init ($tag_host)",
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1615,15 +1023,16 @@
               "type": "fill"
             }
           ],
-          "measurement": "hyper_v_virtual_switch",
+          "measurement": "jvm_memory",
           "orderByTime": "ASC",
           "policy": "default",
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
-                  "Bytes_Received_persec"
+                  "NonHeapMemoryUsage.init"
                 ],
                 "type": "field"
               },
@@ -1633,22 +1042,24 @@
               }
             ]
           ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
             },
             {
               "condition": "AND",
-              "key": "host",
+              "key": "environment",
               "operator": "=~",
-              "value": "/^$_host$/"
+              "value": "/^$_environment$/"
             }
           ]
         },
         {
-          "alias": "Send ($tag_host)",
-          "groupBy": [{
+          "alias": "Used ($tag_host)",
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1667,15 +1078,16 @@
               "type": "fill"
             }
           ],
-          "measurement": "hyper_v_virtual_switch",
+          "measurement": "jvm_memory",
           "orderByTime": "ASC",
           "policy": "default",
-          "refId": "C",
+          "refId": "D",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
-                  "Bytes_Send_persec"
+                  "NonHeapMemoryUsage.used"
                 ],
                 "type": "field"
               },
@@ -1685,16 +1097,17 @@
               }
             ]
           ],
-          "tags": [{
-              "key": "environment",
-              "operator": "=~",
-              "value": "/^$_environment$/"
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
             },
             {
               "condition": "AND",
-              "key": "host",
+              "key": "environment",
               "operator": "=~",
-              "value": "/^$_host$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -1703,7 +1116,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Network bytes",
+      "title": "JVM non-Heap memory",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -1717,8 +1130,419 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
-          "format": "Bps",
+      "yaxes": [
+        {
+          "format": "bytes",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "InfluxDb.Services",
+      "fill": 1,
+      "gridPos": {
+        "h": 10,
+        "w": 9,
+        "x": 15,
+        "y": 16
+      },
+      "id": 8,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": false,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "alias": "Collection committed ($tag_host)",
+          "groupBy": [
+            {
+              "params": [
+                "$_bucket"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "jvm_memory_pool",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "CollectionUsage.committed"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            }
+          ]
+        },
+        {
+          "alias": "Collection used ($tag_host)",
+          "groupBy": [
+            {
+              "params": [
+                "$_bucket"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "jvm_memory_pool",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "CollectionUsage.used"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            }
+          ]
+        },
+        {
+          "alias": "Peak committed ($tag_host)",
+          "groupBy": [
+            {
+              "params": [
+                "$_bucket"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "jvm_memory_pool",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "PeakUsage.committed"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            }
+          ]
+        },
+        {
+          "alias": "Peak used ($tag_host)",
+          "groupBy": [
+            {
+              "params": [
+                "$_bucket"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "jvm_memory_pool",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "PeakUsage.used"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            }
+          ]
+        },
+        {
+          "alias": "Usage committed ($tag_host)",
+          "groupBy": [
+            {
+              "params": [
+                "$_bucket"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "jvm_memory_pool",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Usage.committed"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            }
+          ]
+        },
+        {
+          "alias": "Usage used ($tag_host)",
+          "groupBy": [
+            {
+              "params": [
+                "$_bucket"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "jvm_memory_pool",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "F",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Usage.used"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "category",
+              "operator": "=",
+              "value": "artefacts-storage"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "JVM Memory Pool",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
           "label": null,
           "logBase": 1,
           "max": null,
@@ -1740,45 +1564,46 @@
       }
     }
   ],
-  "refresh": "5m",
+  "refresh": "1m",
   "schemaVersion": 16,
   "style": "dark",
   "tags": [
-    "infrastructure",
-    "hypervisor",
-    "physical"
+    "service",
+    "consul.artefacts"
   ],
   "templating": {
-    "list": [{
+    "list": [
+      {
         "auto": true,
         "auto_count": 100,
         "auto_min": "10s",
         "current": {
-          "text": "auto",
-          "value": "$__auto_interval__bucket"
+          "text": "15s",
+          "value": "15s"
         },
         "hide": 0,
         "label": "Bucket",
         "name": "_bucket",
-        "options": [{
-            "selected": true,
+        "options": [
+          {
+            "selected": false,
             "text": "auto",
             "value": "$__auto_interval__bucket"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "15s",
             "value": "15s"
           },
           {
             "selected": false,
-            "text": "1m",
-            "value": "1m"
+            "text": "30s",
+            "value": "30s"
           },
           {
             "selected": false,
-            "text": "5m",
-            "value": "5m"
+            "text": "1m",
+            "value": "1m"
           },
           {
             "selected": false,
@@ -1797,6 +1622,16 @@
           },
           {
             "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
             "text": "1d",
             "value": "1d"
           },
@@ -1804,9 +1639,19 @@
             "selected": false,
             "text": "7d",
             "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
           }
         ],
-        "query": "15s, 1m, 5m, 10m, 30m, 1h, 1d, 7d",
+        "query": "15s,30s,1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
         "refresh": 2,
         "skipUrlSync": false,
         "type": "interval"
@@ -1817,7 +1662,7 @@
           "text": "All",
           "value": "$__all"
         },
-        "datasource": "InfluxDb.System",
+        "datasource": "InfluxDb.Services",
         "definition": "",
         "hide": 0,
         "includeAll": true,
@@ -1835,38 +1680,11 @@
         "tagsQuery": "",
         "type": "query",
         "useTags": false
-      },
-      {
-        "allValue": null,
-        "current": {
-          "text": "All",
-          "value": [
-            "$__all"
-          ]
-        },
-        "datasource": "InfluxDb.System",
-        "definition": "SHOW TAG VALUES WITH KEY = \"host\"",
-        "hide": 0,
-        "includeAll": true,
-        "label": "Host",
-        "multi": true,
-        "name": "_host",
-        "options": [],
-        "query": "SHOW TAG VALUES WITH KEY = \"host\"",
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 1,
-        "tagValuesQuery": "",
-        "tags": [],
-        "tagsQuery": "",
-        "type": "query",
-        "useTags": false
       }
     ]
   },
   "time": {
-    "from": "now/d",
+    "from": "now-24h",
     "to": "now"
   },
   "timepicker": {
@@ -1895,7 +1713,7 @@
     ]
   },
   "timezone": "browser",
-  "title": "Hyper-V",
-  "uid": "000000024",
+  "title": "Nexus",
+  "uid": "2mcNf2nik",
   "version": 1
 }

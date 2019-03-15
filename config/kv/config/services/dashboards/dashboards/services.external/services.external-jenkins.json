@@ -1,23 +1,27 @@
 {
   "annotations": {
-    "list": [{
-      "builtIn": 1,
-      "datasource": "-- Grafana --",
-      "enable": true,
-      "hide": true,
-      "iconColor": "rgba(0, 211, 255, 1)",
-      "name": "Annotations & Alerts",
-      "type": "dashboard"
-    }]
+    "list": [
+      {
+        "$$hashKey": "object:617",
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
   },
   "description": "",
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 7,
-  "iteration": 1546404281294,
+  "id": 47,
+  "iteration": 1534720730004,
   "links": [],
-  "panels": [{
+  "panels": [
+    {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
@@ -52,16 +56,20 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [{
-        "alias": "/Time/",
-        "yaxis": 2
-      }],
+      "seriesOverrides": [
+        {
+          "alias": "/Time/",
+          "yaxis": 2
+        }
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
+      "targets": [
+        {
           "alias": "Count ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -86,7 +94,8 @@
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "CollectionCount"
                 ],
@@ -104,7 +113,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -117,7 +127,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -125,7 +135,8 @@
         },
         {
           "alias": "Time ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -150,7 +161,8 @@
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "CollectionTime"
                 ],
@@ -168,7 +180,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -181,7 +194,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -189,7 +202,8 @@
         },
         {
           "alias": "Pending finalize ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -214,7 +228,8 @@
           "refId": "C",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "ObjectPendingFinalizationCount"
                 ],
@@ -232,7 +247,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -245,7 +261,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -254,7 +270,6 @@
       ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Jenkins - Garbage Collections",
       "tooltip": {
@@ -270,7 +285,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
+      "yaxes": [
+        {
           "format": "short",
           "label": "Collections / s",
           "logBase": 1,
@@ -286,11 +302,7 @@
           "min": null,
           "show": true
         }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      ]
     },
     {
       "aliasColors": {},
@@ -331,69 +343,73 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
-        "alias": "$tag_host",
-        "groupBy": [{
-            "params": [
-              "$_bucket"
-            ],
-            "type": "time"
-          },
-          {
-            "params": [
-              "host"
-            ],
-            "type": "tag"
-          },
-          {
-            "params": [
-              "null"
-            ],
-            "type": "fill"
-          }
-        ],
-        "measurement": "win_cpu",
-        "orderByTime": "ASC",
-        "policy": "default",
-        "query": "SELECT 100 - mean(\"Percent_Idle_Time\") FROM \"win_cpu\" WHERE (\"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/ AND \"build\" =~ /^$_role$/) AND $timeFilter GROUP BY time($_bucket), \"host\" fill(null)",
-        "rawQuery": true,
-        "refId": "A",
-        "resultFormat": "time_series",
-        "select": [
-          [{
+      "targets": [
+        {
+          "alias": "$tag_host",
+          "groupBy": [
+            {
               "params": [
-                "Percent_Idle_Time"
+                "$_bucket"
               ],
-              "type": "field"
+              "type": "time"
             },
             {
-              "params": [],
-              "type": "mean"
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "win_cpu",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT 100 - mean(\"Percent_Idle_Time\") FROM \"win_cpu\" WHERE (\"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/ AND \"category\" =~ /^$_role$/) AND $timeFilter GROUP BY time($_bucket), \"host\" fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Percent_Idle_Time"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$_host$/"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            },
+            {
+              "condition": "AND",
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$_role$/"
             }
           ]
-        ],
-        "tags": [{
-            "key": "host",
-            "operator": "=~",
-            "value": "/^$_host$/"
-          },
-          {
-            "condition": "AND",
-            "key": "environment",
-            "operator": "=~",
-            "value": "/^$_environment$/"
-          },
-          {
-            "condition": "AND",
-            "key": "build",
-            "operator": "=~",
-            "value": "/^$_role$/"
-          }
-        ]
-      }],
+        }
+      ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Host - Cpu",
       "tooltip": {
@@ -409,7 +425,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
+      "yaxes": [
+        {
           "format": "percent",
           "label": "% Utilization",
           "logBase": 1,
@@ -425,11 +442,7 @@
           "min": "0",
           "show": true
         }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      ]
     },
     {
       "aliasColors": {},
@@ -467,76 +480,82 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [{
-        "alias": "/Cpu/",
-        "fill": 0,
-        "linewidth": 2,
-        "yaxis": 2
-      }],
+      "seriesOverrides": [
+        {
+          "alias": "/Cpu/",
+          "fill": 0,
+          "linewidth": 2,
+          "yaxis": 2
+        }
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
-        "alias": "$tag_host",
-        "groupBy": [{
-            "params": [
-              "$_bucket"
-            ],
-            "type": "time"
-          },
-          {
-            "params": [
-              "host"
-            ],
-            "type": "tag"
-          },
-          {
-            "params": [
-              "null"
-            ],
-            "type": "fill"
-          }
-        ],
-        "measurement": "win_mem",
-        "orderByTime": "ASC",
-        "policy": "default",
-        "refId": "C",
-        "resultFormat": "time_series",
-        "select": [
-          [{
+      "targets": [
+        {
+          "alias": "$tag_host",
+          "groupBy": [
+            {
               "params": [
-                "Available_Bytes"
+                "$_bucket"
               ],
-              "type": "field"
+              "type": "time"
             },
             {
-              "params": [],
-              "type": "mean"
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "win_mem",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "C",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Available_Bytes"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$_host$/"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            },
+            {
+              "condition": "AND",
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$_role$/"
             }
           ]
-        ],
-        "tags": [{
-            "key": "host",
-            "operator": "=~",
-            "value": "/^$_host$/"
-          },
-          {
-            "condition": "AND",
-            "key": "environment",
-            "operator": "=~",
-            "value": "/^$_environment$/"
-          },
-          {
-            "condition": "AND",
-            "key": "build",
-            "operator": "=~",
-            "value": "/^$_role$/"
-          }
-        ]
-      }],
+        }
+      ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Host - Memory",
       "tooltip": {
@@ -552,7 +571,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
+      "yaxes": [
+        {
           "format": "bytes",
           "label": "Memory free",
           "logBase": 1,
@@ -568,11 +588,7 @@
           "min": "0",
           "show": true
         }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      ]
     },
     {
       "aliasColors": {},
@@ -612,77 +628,81 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
-        "alias": "$tag_host",
-        "datasource": "InfluxDb.Services",
-        "groupBy": [{
-            "params": [
-              "$_bucket"
-            ],
-            "type": "time"
-          },
-          {
-            "params": [
-              "host"
-            ],
-            "type": "tag"
-          },
-          {
-            "params": [
-              "name"
-            ],
-            "type": "tag"
-          },
-          {
-            "params": [
-              "null"
-            ],
-            "type": "fill"
-          }
-        ],
-        "hide": false,
-        "measurement": "jenkins_vm_cpu",
-        "orderByTime": "ASC",
-        "policy": "default",
-        "query": "SELECT mean(\"Value\") FROM \"jenkins_vm_cpu\" WHERE (\"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/ AND \"build\" =~ /^$_role$/) AND $timeFilter GROUP BY time($_bucket), \"host\" fill(null)",
-        "rawQuery": false,
-        "refId": "A",
-        "resultFormat": "time_series",
-        "select": [
-          [{
+      "targets": [
+        {
+          "alias": "$tag_host",
+          "datasource": "InfluxDb.Services",
+          "groupBy": [
+            {
               "params": [
-                "Value"
+                "$_bucket"
               ],
-              "type": "field"
+              "type": "time"
             },
             {
-              "params": [],
-              "type": "mean"
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "name"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "jenkins_vm_cpu",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT mean(\"Value\") FROM \"jenkins_vm_cpu\" WHERE (\"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/ AND \"category\" =~ /^$_role$/) AND $timeFilter GROUP BY time($_bucket), \"host\" fill(null)",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$_host$/"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            },
+            {
+              "condition": "AND",
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$_role$/"
             }
           ]
-        ],
-        "tags": [{
-            "key": "host",
-            "operator": "=~",
-            "value": "/^$_host$/"
-          },
-          {
-            "condition": "AND",
-            "key": "environment",
-            "operator": "=~",
-            "value": "/^$_environment$/"
-          },
-          {
-            "condition": "AND",
-            "key": "build",
-            "operator": "=~",
-            "value": "/^$_role$/"
-          }
-        ]
-      }],
+        }
+      ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Jenkins - Cpu",
       "tooltip": {
@@ -698,7 +718,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
+      "yaxes": [
+        {
           "format": "percentunit",
           "label": "Cpu Load",
           "logBase": 1,
@@ -714,11 +735,7 @@
           "min": null,
           "show": false
         }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      ]
     },
     {
       "aliasColors": {},
@@ -758,67 +775,71 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
-        "alias": "$tag_host",
-        "groupBy": [{
-            "params": [
-              "$_bucket"
-            ],
-            "type": "time"
-          },
-          {
-            "params": [
-              "host"
-            ],
-            "type": "tag"
-          },
-          {
-            "params": [
-              "null"
-            ],
-            "type": "fill"
-          }
-        ],
-        "measurement": "jenkins_vm_memory",
-        "orderByTime": "ASC",
-        "policy": "default",
-        "refId": "A",
-        "resultFormat": "time_series",
-        "select": [
-          [{
+      "targets": [
+        {
+          "alias": "$tag_host",
+          "groupBy": [
+            {
               "params": [
-                "Value.Value"
+                "$_bucket"
               ],
-              "type": "field"
+              "type": "time"
             },
             {
-              "params": [],
-              "type": "mean"
+              "params": [
+                "host"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "jenkins_vm_memory",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "Value.Value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "host",
+              "operator": "=~",
+              "value": "/^$_host$/"
+            },
+            {
+              "condition": "AND",
+              "key": "environment",
+              "operator": "=~",
+              "value": "/^$_environment$/"
+            },
+            {
+              "condition": "AND",
+              "key": "category",
+              "operator": "=~",
+              "value": "/^$_role$/"
             }
           ]
-        ],
-        "tags": [{
-            "key": "host",
-            "operator": "=~",
-            "value": "/^$_host$/"
-          },
-          {
-            "condition": "AND",
-            "key": "environment",
-            "operator": "=~",
-            "value": "/^$_environment$/"
-          },
-          {
-            "condition": "AND",
-            "key": "build",
-            "operator": "=~",
-            "value": "/^$_role$/"
-          }
-        ]
-      }],
+        }
+      ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Jenkins -  Memory",
       "tooltip": {
@@ -834,7 +855,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
+      "yaxes": [
+        {
           "format": "bytes",
           "label": "Memory used",
           "logBase": 1,
@@ -850,11 +872,7 @@
           "min": null,
           "show": true
         }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      ]
     },
     {
       "aliasColors": {},
@@ -891,7 +909,8 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [{
+      "seriesOverrides": [
+        {
           "alias": "/Max/",
           "fill": 0
         },
@@ -907,9 +926,11 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
+      "targets": [
+        {
           "alias": "Committed ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -934,7 +955,8 @@
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "HeapMemoryUsage.committed"
                 ],
@@ -946,7 +968,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -959,7 +982,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -967,7 +990,8 @@
         },
         {
           "alias": "Max ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -992,7 +1016,8 @@
           "refId": "C",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "HeapMemoryUsage.max"
                 ],
@@ -1004,7 +1029,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -1017,7 +1043,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -1025,7 +1051,8 @@
         },
         {
           "alias": "Used ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1050,7 +1077,8 @@
           "refId": "D",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "HeapMemoryUsage.used"
                 ],
@@ -1062,7 +1090,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -1075,7 +1104,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -1084,7 +1113,6 @@
       ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Jenkins - Heap",
       "tooltip": {
@@ -1100,7 +1128,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
+      "yaxes": [
+        {
           "format": "bytes",
           "label": null,
           "logBase": 1,
@@ -1116,11 +1145,7 @@
           "min": null,
           "show": true
         }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      ]
     },
     {
       "aliasColors": {},
@@ -1160,59 +1185,62 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
-        "alias": "$tag_host",
-        "groupBy": [{
-            "params": [
-              "1m"
-            ],
-            "type": "time"
-          },
-          {
-            "params": [
-              "host"
-            ],
-            "type": "tag"
-          },
-          {
-            "params": [
-              "null"
-            ],
-            "type": "fill"
-          }
-        ],
-        "hide": false,
-        "measurement": "jvm_memory",
-        "orderByTime": "ASC",
-        "policy": "default",
-        "query": "SELECT MAX( \"utilization\") FROM ( SELECT \"HeapMemoryUsage.used\" / \"HeapMemoryUsage.max\" AS \"utilization\" FROM \"jvm_memory\" WHERE (\"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/ AND \"build\" =~ /^$_role$/) AND $timeFilter) GROUP BY time($_bucket), \"host\" fill(null)",
-        "rawQuery": true,
-        "refId": "A",
-        "resultFormat": "time_series",
-        "select": [
-          [{
-              "params": [
-                "HeapMemoryUsage.max"
-              ],
-              "type": "field"
-            },
+      "targets": [
+        {
+          "alias": "$tag_host",
+          "groupBy": [
             {
-              "params": [],
-              "type": "mean"
+              "params": [
+                "1m"
+              ],
+              "type": "time"
             },
             {
               "params": [
-                "HeapMemoryUsage.used"
+                "host"
               ],
-              "type": "math"
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
             }
-          ]
-        ],
-        "tags": []
-      }],
+          ],
+          "hide": false,
+          "measurement": "jvm_memory",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "query": "SELECT MAX( \"utilization\") FROM ( SELECT \"HeapMemoryUsage.used\" / \"HeapMemoryUsage.max\" AS \"utilization\" FROM \"jvm_memory\" WHERE (\"host\" =~ /^$_host$/ AND \"environment\" =~ /^$_environment$/ AND \"category\" =~ /^$_role$/) AND $timeFilter) GROUP BY time($_bucket), \"host\" fill(null)",
+          "rawQuery": true,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "HeapMemoryUsage.max"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              },
+              {
+                "params": [
+                  "HeapMemoryUsage.used"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": []
+        }
+      ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Jenkins - % Heap used",
       "tooltip": {
@@ -1228,7 +1256,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
+      "yaxes": [
+        {
           "format": "percentunit",
           "label": "Heap Utilization",
           "logBase": 1,
@@ -1244,11 +1273,7 @@
           "min": null,
           "show": true
         }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      ]
     },
     {
       "aliasColors": {},
@@ -1289,9 +1314,11 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
+      "targets": [
+        {
           "alias": "Committed ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1316,7 +1343,8 @@
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "NonHeapMemoryUsage.committed"
                 ],
@@ -1328,7 +1356,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -1341,7 +1370,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -1349,7 +1378,8 @@
         },
         {
           "alias": "Init ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1374,7 +1404,8 @@
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "NonHeapMemoryUsage.init"
                 ],
@@ -1386,7 +1417,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -1399,7 +1431,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -1407,7 +1439,8 @@
         },
         {
           "alias": "Used ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1432,7 +1465,8 @@
           "refId": "D",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "NonHeapMemoryUsage.used"
                 ],
@@ -1444,7 +1478,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -1457,7 +1492,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -1466,7 +1501,6 @@
       ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "JVM non-Heap memory",
       "tooltip": {
@@ -1482,7 +1516,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
+      "yaxes": [
+        {
           "format": "bytes",
           "label": null,
           "logBase": 1,
@@ -1498,11 +1533,7 @@
           "min": null,
           "show": true
         }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      ]
     },
     {
       "aliasColors": {},
@@ -1543,9 +1574,11 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
+      "targets": [
+        {
           "alias": "Collection committed ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1570,7 +1603,8 @@
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "CollectionUsage.committed"
                 ],
@@ -1582,7 +1616,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -1595,7 +1630,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -1603,7 +1638,8 @@
         },
         {
           "alias": "Collection used ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1628,7 +1664,8 @@
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "CollectionUsage.used"
                 ],
@@ -1640,7 +1677,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -1653,7 +1691,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -1661,7 +1699,8 @@
         },
         {
           "alias": "Peak committed ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1686,7 +1725,8 @@
           "refId": "C",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "PeakUsage.committed"
                 ],
@@ -1698,7 +1738,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -1711,7 +1752,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -1719,7 +1760,8 @@
         },
         {
           "alias": "Peak used ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1744,7 +1786,8 @@
           "refId": "D",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "PeakUsage.used"
                 ],
@@ -1756,7 +1799,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -1769,7 +1813,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -1777,7 +1821,8 @@
         },
         {
           "alias": "Usage committed ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1802,7 +1847,8 @@
           "refId": "E",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "Usage.committed"
                 ],
@@ -1814,7 +1860,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -1827,7 +1874,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -1835,7 +1882,8 @@
         },
         {
           "alias": "Usage used ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -1860,7 +1908,8 @@
           "refId": "F",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "Usage.used"
                 ],
@@ -1872,7 +1921,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -1885,7 +1935,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -1894,7 +1944,6 @@
       ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "JVM Memory Pool",
       "tooltip": {
@@ -1910,7 +1959,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
+      "yaxes": [
+        {
           "format": "bytes",
           "label": null,
           "logBase": 1,
@@ -1926,11 +1976,7 @@
           "min": null,
           "show": true
         }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      ]
     },
     {
       "aliasColors": {},
@@ -1967,16 +2013,20 @@
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
-      "seriesOverrides": [{
-        "alias": "/Queue/",
-        "yaxis": 2
-      }],
+      "seriesOverrides": [
+        {
+          "alias": "/Queue/",
+          "yaxis": 2
+        }
+      ],
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
+      "targets": [
+        {
           "alias": "Executors ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -2001,7 +2051,8 @@
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "Value.Value"
                 ],
@@ -2013,7 +2064,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -2026,7 +2078,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -2034,7 +2086,8 @@
         },
         {
           "alias": "Nodes ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -2059,7 +2112,8 @@
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "Value.Value"
                 ],
@@ -2071,7 +2125,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -2084,7 +2139,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -2093,7 +2148,6 @@
       ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Jenkins nodes & executors",
       "tooltip": {
@@ -2109,7 +2163,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
+      "yaxes": [
+        {
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2125,11 +2180,7 @@
           "min": null,
           "show": true
         }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      ]
     },
     {
       "aliasColors": {},
@@ -2170,9 +2221,11 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
+      "targets": [
+        {
           "alias": "Requests ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -2197,7 +2250,8 @@
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "MeanRate"
                 ],
@@ -2209,7 +2263,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -2222,7 +2277,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -2230,7 +2285,8 @@
         },
         {
           "alias": "Response codes ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -2255,7 +2311,8 @@
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "MeanRate"
                 ],
@@ -2267,7 +2324,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -2280,7 +2338,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -2289,7 +2347,6 @@
       ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Jenkins - Web",
       "tooltip": {
@@ -2305,7 +2362,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
+      "yaxes": [
+        {
           "format": "ops",
           "label": null,
           "logBase": 1,
@@ -2321,11 +2379,7 @@
           "min": null,
           "show": true
         }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      ]
     },
     {
       "aliasColors": {},
@@ -2366,9 +2420,11 @@
       "spaceLength": 10,
       "stack": false,
       "steppedLine": false,
-      "targets": [{
+      "targets": [
+        {
           "alias": "Jobs ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -2393,7 +2449,8 @@
           "refId": "A",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "Count"
                 ],
@@ -2409,7 +2466,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -2422,7 +2480,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -2430,7 +2488,8 @@
         },
         {
           "alias": "Queue ($tag_host)",
-          "groupBy": [{
+          "groupBy": [
+            {
               "params": [
                 "$_bucket"
               ],
@@ -2455,7 +2514,8 @@
           "refId": "B",
           "resultFormat": "time_series",
           "select": [
-            [{
+            [
+              {
                 "params": [
                   "Value.Value"
                 ],
@@ -2467,7 +2527,8 @@
               }
             ]
           ],
-          "tags": [{
+          "tags": [
+            {
               "key": "host",
               "operator": "=~",
               "value": "/^$_host$/"
@@ -2480,7 +2541,7 @@
             },
             {
               "condition": "AND",
-              "key": "build",
+              "key": "category",
               "operator": "=~",
               "value": "/^$_role$/"
             }
@@ -2489,7 +2550,6 @@
       ],
       "thresholds": [],
       "timeFrom": null,
-      "timeRegions": [],
       "timeShift": null,
       "title": "Jenkins - Jobs",
       "tooltip": {
@@ -2505,7 +2565,8 @@
         "show": true,
         "values": []
       },
-      "yaxes": [{
+      "yaxes": [
+        {
           "format": "short",
           "label": null,
           "logBase": 1,
@@ -2521,14 +2582,10 @@
           "min": null,
           "show": true
         }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
+      ]
     }
   ],
-  "refresh": "30s",
+  "refresh": "1m",
   "schemaVersion": 16,
   "style": "dark",
   "tags": [
@@ -2536,7 +2593,8 @@
     "consul.build"
   ],
   "templating": {
-    "list": [{
+    "list": [
+      {
         "auto": true,
         "auto_count": 100,
         "auto_min": "10s",
@@ -2547,7 +2605,8 @@
         "hide": 0,
         "label": "Bucket",
         "name": "_bucket",
-        "options": [{
+        "options": [
+          {
             "selected": true,
             "text": "auto",
             "value": "$__auto_interval__bucket"
@@ -2615,18 +2674,18 @@
         ],
         "query": "10s,30s,1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
         "refresh": 2,
-        "skipUrlSync": false,
         "type": "interval"
       },
       {
         "allValue": null,
         "current": {
-          "selected": false,
-          "text": "All",
-          "value": "$__all"
+          "tags": [],
+          "text": "vista-production-01",
+          "value": [
+            "vista-production-01"
+          ]
         },
         "datasource": "InfluxDb.Services",
-        "definition": "",
         "hide": 0,
         "includeAll": true,
         "label": "Environment",
@@ -2636,7 +2695,6 @@
         "query": "SHOW TAG VALUES WITH KEY = \"environment\"",
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
@@ -2651,7 +2709,6 @@
           "value": "$__all"
         },
         "datasource": "InfluxDb.Services",
-        "definition": "",
         "hide": 0,
         "includeAll": true,
         "label": "Host",
@@ -2661,7 +2718,6 @@
         "query": "SHOW TAG VALUES FROM \"jvm_memory\" WITH KEY = \"host\"",
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
@@ -2676,17 +2732,15 @@
           "value": "$__all"
         },
         "datasource": "InfluxDb.Services",
-        "definition": "SHOW TAG VALUES FROM \"jvm_memory\" WITH KEY = \"build\"",
         "hide": 0,
         "includeAll": true,
         "label": "Role",
         "multi": true,
         "name": "_role",
         "options": [],
-        "query": "SHOW TAG VALUES FROM \"jvm_memory\" WITH KEY = \"build\"",
+        "query": "SHOW TAG VALUES FROM \"jvm_memory\" WITH KEY = \"category\"",
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
@@ -2697,7 +2751,7 @@
     ]
   },
   "time": {
-    "from": "now-24h",
+    "from": "now-3h",
     "to": "now"
   },
   "timepicker": {
@@ -2728,5 +2782,5 @@
   "timezone": "browser",
   "title": "Jenkins",
   "uid": "nKPM8AZmz",
-  "version": 1
+  "version": 51
 }
