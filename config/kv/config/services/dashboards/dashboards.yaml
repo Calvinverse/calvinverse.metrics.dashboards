@@ -1,40 +1,80 @@
 config:
-  # Define the datasource for services
-  - key: config/services/dashboards/metrics/provisioning/datasources/services
-    file: datasources/influxdb.services.notkv.yaml
-    
+  #
+  # DATA SOURCES
+  #
+
   # Define the datasource for system
   - key: config/services/dashboards/metrics/provisioning/datasources/system
     file: datasources/influxdb.system.notkv.yaml
 
+  # Define the datasource for services
+  - key: config/services/dashboards/metrics/provisioning/datasources/services
+    file: datasources/influxdb.services.notkv.yaml
+
+  # Define the datasource for services
+  - key: config/services/dashboards/metrics/provisioning/datasources/statsd
+    file: datasources/influxdb.statsd.notkv.yaml
+
+  #
+  # DASHBOARDS
+  #
+
+  #
+  # ENVIRONMENT
+  #
+
   # Define the dashboard for consul
   - key: config/services/dashboards/metrics/provisioning/dashboards/environment/environment-consul
     file: dashboards/environment/environment-consul.json
-  
-  # Define the dashboard for elasticsearch
-  - key: config/services/dashboards/metrics/provisioning/dashboards/services/service-elasticsearch
-    file: dashboards/services/service-elasticsearch.json
 
-  # Define the dashboard for influx
-  - key: config/services/dashboards/metrics/provisioning/dashboards/services/service-influxdb
-    file: dashboards/services/service-influxdb.json
-  
-  # Define the dashboard for jenkins
-  - key: config/services/dashboards/metrics/provisioning/dashboards/services/service-jenkins
-    file: dashboards/services/service-jenkins.json
-  
-  # Define the dashboard for nexus
-  - key: config/services/dashboards/metrics/provisioning/dashboards/services/service-nexus
-    file: dashboards/services/service-nexus.json
+  # Define the dashboard for vault
+  - key: config/services/dashboards/metrics/provisioning/dashboards/environment/environment-vault
+    file: dashboards/environment/environment-vault.json
 
-  # Define the dashboard for RabbitMQ
-  - key: config/services/dashboards/metrics/provisioning/dashboards/services/service-queue
-    file: dashboards/services/service-queue.json
-
-  # Define the dashboard for Hosts
-  - key: config/services/dashboards/metrics/provisioning/dashboards/system/system-hosts
-    file: dashboards/system/system-hosts.json
+  #
+  # INFRASTRUCTURE
+  #
 
   # Define the dashboard for Hyper-V
-  - key: config/services/dashboards/metrics/provisioning/dashboards/system/system-hyperv
-    file: dashboards/system/system-hyperv.json
+  - key: config/services/dashboards/metrics/provisioning/dashboards/infrastructure/infrastructure-hyperv
+    file: dashboards/infrastructure/infrastructure-hyperv.json
+
+  # Define the dashboard for the single host
+  - key: config/services/dashboards/metrics/provisioning/dashboards/infrastructure/infrastructure-single.host
+    file: dashboards/infrastructure/infrastructure-single.host.json
+
+  #
+  # NETWORK
+  #
+
+  # Define the dashboard for the UAPs
+  - key: config/services/dashboards/metrics/provisioning/dashboards/network/environment-unify.uap
+    file: dashboards/network/network-unifi.uap.json
+
+  # Define the dashboard for the USG
+  - key: config/services/dashboards/metrics/provisioning/dashboards/network/environment-unify.usg
+    file: dashboards/network/network-unifi.usg.json
+
+  #
+  # SERVICES.EXTERNAL
+  #
+
+  # Define the dashboard for elasticsearch
+  - key: config/services/dashboards/metrics/provisioning/dashboards/services.external/service.external-elasticsearch
+    file: dashboards/services.external/service.external-elasticsearch.json
+
+  # Define the dashboard for influx
+  - key: config/services/dashboards/metrics/provisioning/dashboards/services.external/service.external-influxdb
+    file: dashboards/services.external/service.external-influxdb.json
+
+  # Define the dashboard for jenkins
+  - key: config/services/dashboards/metrics/provisioning/dashboards/services.external/service.external-jenkins
+    file: dashboards/services.external/service.external-jenkins.json
+
+  # Define the dashboard for nexus
+  - key: config/services/dashboards/metrics/provisioning/dashboards/services.external/service.external-nexus
+    file: dashboards/services.external/service.external-nexus.json
+
+  # Define the dashboard for RabbitMQ
+  - key: config/services/dashboards/metrics/provisioning/dashboards/services.external/service.external-queue
+    file: dashboards/services.external/service.external-queue.json
