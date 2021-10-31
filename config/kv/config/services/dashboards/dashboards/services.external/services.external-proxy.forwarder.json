@@ -1164,12 +1164,6 @@
         },
         {
           "allValue": null,
-          "current": {
-            "text": "vista-production-01",
-            "value": [
-              "vista-production-01"
-            ]
-          },
           "datasource": "InfluxDb.Services",
           "hide": 0,
           "includeAll": true,

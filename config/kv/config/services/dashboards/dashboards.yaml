@@ -61,20 +61,20 @@ config:
 
   # Define the dashboard for elasticsearch
   - key: config/services/dashboards/metrics/provisioning/dashboards/services.external/service.external-elasticsearch
-    file: dashboards/services.external/service.external-elasticsearch.json
+    file: dashboards/services.external/services.external-elasticsearch.json
 
   # Define the dashboard for influx
   - key: config/services/dashboards/metrics/provisioning/dashboards/services.external/service.external-influxdb
-    file: dashboards/services.external/service.external-influxdb.json
+    file: dashboards/services.external/services.external-influxdb.json
 
   # Define the dashboard for jenkins
   - key: config/services/dashboards/metrics/provisioning/dashboards/services.external/service.external-jenkins
-    file: dashboards/services.external/service.external-jenkins.json
+    file: dashboards/services.external/services.external-jenkins.json
 
   # Define the dashboard for nexus
   - key: config/services/dashboards/metrics/provisioning/dashboards/services.external/service.external-nexus
-    file: dashboards/services.external/service.external-nexus.json
+    file: dashboards/services.external/services.external-nexus.json
 
   # Define the dashboard for RabbitMQ
   - key: config/services/dashboards/metrics/provisioning/dashboards/services.external/service.external-queue
-    file: dashboards/services.external/service.external-queue.json
+    file: dashboards/services.external/services.external-queue.json

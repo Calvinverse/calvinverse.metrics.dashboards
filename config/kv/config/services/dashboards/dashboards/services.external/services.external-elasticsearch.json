@@ -159,7 +159,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -316,7 +316,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -474,7 +474,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -604,7 +604,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -734,7 +734,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -878,7 +878,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -1008,7 +1008,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -1138,7 +1138,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -1268,7 +1268,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -1398,7 +1398,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             }
           ]
         }
@@ -1554,7 +1554,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -1730,7 +1730,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -1885,7 +1885,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT 1 - (mean(\"total_available_in_bytes\") / mean(\"total_total_in_bytes\")) FROM \"elasticsearch_fs\" WHERE (\"environment\" =~ /^$_cluster$/ AND \"node_name\" =~ /^$_node$/) AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
+          "query": "SELECT 1 - (mean(\"total_available_in_bytes\") / mean(\"total_total_in_bytes\")) FROM \"elasticsearch_fs\" WHERE (\"environment\" =~ /^$_environment$/ AND \"node_name\" =~ /^$_node$/) AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -1907,7 +1907,7 @@
             {
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -2086,7 +2086,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -2234,7 +2234,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -2411,7 +2411,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -2588,7 +2588,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -2779,7 +2779,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -2935,7 +2935,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"indexing_index_time_in_millis\") / mean(\"indexing_index_total\") FROM \"elasticsearch_indices\" WHERE (\"environment\" =~ /^$_cluster$/ AND \"node_name\" =~ /^$_node$/) AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
+          "query": "SELECT mean(\"indexing_index_time_in_millis\") / mean(\"indexing_index_total\") FROM \"elasticsearch_indices\" WHERE (\"environment\" =~ /^$_environment$/ AND \"node_name\" =~ /^$_node$/) AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -2957,7 +2957,7 @@
             {
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -3135,7 +3135,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -3291,7 +3291,7 @@
           ],
           "orderByTime": "ASC",
           "policy": "default",
-          "query": "SELECT mean(\"search_query_time_in_millis\") / mean(\"search_query_total\") FROM \"elasticsearch_indices\" WHERE (\"environment\" =~ /^$_cluster$/ AND \"node_name\" =~ /^$_node$/) AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
+          "query": "SELECT mean(\"search_query_time_in_millis\") / mean(\"search_query_total\") FROM \"elasticsearch_indices\" WHERE (\"environment\" =~ /^$_environment$/ AND \"node_name\" =~ /^$_node$/) AND $timeFilter GROUP BY time($__interval), \"host\" fill(null)",
           "rawQuery": true,
           "refId": "A",
           "resultFormat": "time_series",
@@ -3313,7 +3313,7 @@
             {
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -3491,7 +3491,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -3668,7 +3668,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -3845,7 +3845,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -4036,7 +4036,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -4213,7 +4213,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -4390,7 +4390,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -4567,7 +4567,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -4744,7 +4744,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -4921,7 +4921,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -5112,7 +5112,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -5289,7 +5289,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -5480,7 +5480,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -5657,7 +5657,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -5835,7 +5835,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -5929,7 +5929,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -6107,7 +6107,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -6201,7 +6201,7 @@
               "condition": "AND",
               "key": "environment",
               "operator": "=~",
-              "value": "/^$_cluster$/"
+              "value": "/^$_environment$/"
             },
             {
               "condition": "AND",
@@ -6260,8 +6260,9 @@
   "style": "dark",
   "tags": [
     "consul.documents",
+    "elasticsearch",
     "service",
-    "elasticsearch"
+    "telegraf"
   ],
   "templating": {
     "list": [
@@ -6350,7 +6351,7 @@
         "includeAll": true,
         "label": "Cluster",
         "multi": true,
-        "name": "_cluster",
+        "name": "_environment",
         "options": [],
         "query": "SHOW TAG VALUES WITH KEY = \"environment\"",
         "refresh": 1,
@@ -6421,6 +6422,6 @@
   },
   "timezone": "browser",
   "title": "Elasticsearch",
-  "uid": "X-KDgLkiz",
+  "uid": null,
   "version": 8
 }

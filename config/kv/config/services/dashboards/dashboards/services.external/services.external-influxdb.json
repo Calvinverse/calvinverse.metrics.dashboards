@@ -1896,9 +1896,11 @@
   "schemaVersion": 16,
   "style": "dark",
   "tags": [
-    "service",
     "consul.metrics",
-    "meta"
+    "influxdb",
+    "meta",
+    "service",
+    "telegraf"
   ],
   "templating": {
     "list": [
@@ -2040,6 +2042,6 @@
   },
   "timezone": "browser",
   "title": "InfluxDb",
-  "uid": "000000008",
+  "uid": null,
   "version": 9
 }
